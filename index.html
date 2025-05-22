@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>ThinkSound: Chain-of-Thought Reasoning in Multimodal Large Language Models for Audio Generation</title>
+    <style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        padding: 0;
+        background-color: #ffffff; 
+        width: 1000px;
+        margin: 0 auto;
+        color: #111; 
+    }
+
+    h1 {
+        margin-bottom: 40px;
+        color: #222;
+    }
+
+    h2 {
+        font-size: 18px;
+        text-align: left;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    hr {
+        border: none;
+        border-top: 2px solid #aaa; /* 颜色更亮 */
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    #video-selector {
+        width: 100%;
+        max-width: 900px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+
+    .chapter-title {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 18px;
+        text-align: left;
+        margin-bottom: 5px;
+        color: #444;
+    }
+
+    .chapter-line {
+        border: none;
+        border-top: 2px solid #bbb;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    .section {
+        background-color: #fdfdfd;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
+        margin-bottom: 40px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        color: #222;
+        margin-bottom: 20px;
+    }
+
+    .video-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .video-column {
+        width: 22%;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-player-container {
+        width: 100%;
+        height: 200px;
+        position: relative;
+        background-color: #eee;
+    }
+
+    .video-player-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .fullscreen-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .caption {
+        font-size: 18px;
+        color: #333;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .video-title {
+        font-size: 16px;
+        color: #444;
+        margin-top: 20px;
+    }
+
+    .image-container {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .image-caption {
+        font-size: 16px;
+        color: #444;
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+
+    caption {
+        font-style: italic;
+        text-align: center;
+        caption-side: bottom;
+        margin-top: 10px;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+
+    th {
+        background-color: #f9f9f9;
+    }
+
+    .image-caption {
+        font-style: italic;
+        text-align: center;
+    }
+
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .button-container .fold-btn {
+        flex: 0 0 23%;
+        margin-bottom: 8px;
+    }
+
+    #prevBtn, #nextBtn {
+        background-color: #eeeeee;
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        font-size: 20px;
+        color: #333;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #prevBtn:hover, #nextBtn:hover {
+        background-color: #dddddd;
+    }
+</style>
+
+</head>
+<body>
+    <h1>ThinkSound: Chain-of-Thought Reasoning in Multimodal Large Language Models for Audio Generation</h1>
+
+    <!-- Abstract section -->
+    <div class="abstract" style="text-align: center;"></div>
+        <h2 class="chapter-title">Abstract</h2>
+        <hr class="chapter-line">
+        <p style="text-align: left;"> While end-to-end video-to-audio generation has greatly improved, producing high-fidelity audio that authentically captures the nuances of visual content remains challenging. Like professionals in the creative industries, such generation requires sophisticated reasoning about items such as visual dynamics, acoustic environments, and temporal relationships. We present \textbf{ThinkSound}, a novel framework that leverages Chain-of-Thought (CoT) reasoning to enable stepwise, interactive audio generation and editing for videos. Our approach decomposes the process into three complementary stages: foundational foley generation that creates semantically coherent soundscapes, interactive object-centric refinement through precise user interactions, and targeted editing guided by natural language instructions. At each stage, a multimodal large language model generates contextually aligned CoT reasoning that guides a unified audio foundation model. Furthermore, we introduce \textbf{AudioCoT}, a comprehensive dataset with structured reasoning annotations that establishes connections between visual content, textual descriptions, and sound synthesis.  Experiments demonstrate that ThinkSound achieves state-of-the-art performance in video-to-audio generation across both audio metrics and CoT metrics and excels in out-of-distribution Movie Gen Audio benchmark.</p>
+    </div>
+    
+    <div class="video-carousel-section" style="text-align: center;">
+    <h2 class="chapter-title">Standard Video Demo Player</h2>
+    <hr class="chapter-line">
+    <strong style="font-size: 19px; display: block; margin-bottom: 20px;">
+        🎧 Please wear headphones to experience the demo 🎥.
+    </strong>
+
+    <div class="carousel-container" style="display: flex; justify-content: center; align-items: center; position: relative;">
+        <button id="prevBtn" onclick="moveCarousel(-1)" style="position: absolute; left: 10px;">&#8249;</button>
+        
+        <div id="carousel" style="max-width: 900px; overflow: hidden;">
+            <!-- Current video will be inserted here -->
+        </div>
+
+        <button id="nextBtn" onclick="moveCarousel(1)" style="position: absolute; right: 10px;">&#8250;</button>
+    </div>
+
+    <div id="video-id" class="caption" style="margin-top: 10px; font-weight: bold;"></div>
+</div>
+
+<script>
+    // 1. Define your video list
+    const videoPaths = [
+        "video1.webm",
+        "video2.webm",
+        "video3.webm"
+    ];
+
+    let currentIndex = 0;
+
+    function createStandardVideoPlayer(videoPath) {
+        const video = document.createElement('video');
+        video.src = videoPath;
+        video.controls = true;
+        video.style.width = '100%';
+        video.style.borderRadius = '10px';
+        video.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+        video.style.backgroundColor = '#000';
+        return video;
+    }
+
+    function moveCarousel(direction) {
+        currentIndex = (currentIndex + direction + videoPaths.length) % videoPaths.length;
+
+        const carousel = document.getElementById('carousel');
+        carousel.innerHTML = ''; // Clear previous
+
+        const videoPlayer = createStandardVideoPlayer(videoPaths[currentIndex]);
+        carousel.appendChild(videoPlayer);
+
+        const videoIdElement = document.getElementById('video-id');
+        videoIdElement.innerText = `Now playing: ${videoPaths[currentIndex]}`;
+    }
+
+    // 2. Initial render
+    moveCarousel(0);
+</script>
+
+
+
+    </script>
+    <!-- Image section -->
+    <div class="image-container">
+        <h2 class="chapter-title">Samples</h2>
+        <hr class="chapter-line">
+        <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;">
+            
+        </p>
+        
+        
+
+
+
+
+    </div>
+        <h2 class="chapter-title"> Ablation Studies</h2>
+        <hr class="chapter-line">
+        <!-- Table 1: Performance Comparison -->
+        
+    <h2 class="chapter-title"> Code and Dataset </h2>
+        <hr class="chapter-line">
+        <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;">
+          The code and dataset will be released soon. 
+        </p>
+
+
+</body>
+</html>
