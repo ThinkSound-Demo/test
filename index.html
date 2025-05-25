@@ -28,25 +28,41 @@
         text-shadow: 0 1px 3px rgba(50, 80, 130, 0.15);
     }
 
-    h2, .chapter-title {
-        font-size: 1.4rem;
+    .chapter-title {
+        position: relative;
         text-align: left;
-        margin-bottom: 12px;
-        color: #636363;
-        border-left: 6px solid #acb5c1;
-        padding-left: 12px;
-        font-weight: 600;
-        letter-spacing: 0.03em;
+        font-size: 1.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #3148b1, #e0e2db);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        padding-left: 1.2em;
+        margin-bottom: 1em;
+        padding: 0.2em 0 0.5em 0.4em;
     }
 
-    hr, .chapter-line {
-        border: none;
-        border-top: 2px solid #bdd7ee;
-        margin: 6px 0 20px 0;
-        text-align: left;
-        width: 100%;
-        max-width: 980px;
+    .chapter-title::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0.2em;
+        width: 6px; height: 100%;
+        background: #05efef;
+        transform: skewY(-12deg);
+        border-radius: 3px;
     }
+    .chapter-title::after {
+        content: "";
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%; height: 8px;
+        background: linear-gradient(135deg, #e97bcf, #e9edf0);
+        transform: skewX(-12deg);
+        border-radius: 4px 4px 0 0;
+    }
+
+
 
     #video-selector {
         width: 100%;
@@ -293,7 +309,7 @@
     .video-card {
         flex: 0 0 360px;  /* 固定宽度 */
         height: 240px;    /* 固定高度 */
-        margin: 0 10px;
+        margin: 0 20px;
         overflow: hidden; /* 隐藏溢出内容 */
         position: relative;
         border-radius: 10px; /* 添加圆角 */
@@ -317,23 +333,23 @@
     }
 
     .ablation-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 14px;
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 14px;
     }
 
     .ablation-table th, .ablation-table td {
-    border: 1px solid #ccc;
-    padding: 6px 10px;
-    text-align: center;
+        border: 1px solid #ccc;
+        padding: 6px 10px;
+        text-align: center;
     }
 
     .ablation-table caption {
-    caption-side: top;
-    text-align: left;
-    font-weight: bold;
-    margin-bottom: 4px;
+        caption-side: top;
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 4px;
     }
 
 
@@ -342,8 +358,19 @@
 
 </head>
 <body>
-    <h1>ThinkSound: Chain-of-Thought Reasoning in Multimodal Large Language Models for Audio Generation</h1>
+    <h1 style="font-size: 40px;display: flex;  width: 90vw; left: calc(-45vw + 50%); justify-content: center; align-items: center; position: relative;">ThinkSound: Chain-of-Thought Reasoning in Multimodal Large Language Models for Audio Generation</h1>
+    <strong style="font-size: 19px; display: block; margin-bottom: 20px;">
+        Click on any video to play or pause it 🎥.
+    </strong>
+    <div class="carousel-container" style="display: flex;  width: 90vw; left: calc(-45vw + 50%); justify-content: center; align-items: center; position: relative;">
+            
+        
+        <div id="carousel" style="max-width: 1000px; overflow: hidden ;margin: 0 auto;"></div>
+            <!-- Current video will be inserted here -->
+        </div>
 
+        
+    </div>
     <!-- Abstract section -->
     <div class="abstract" style="text-align: center;"></div>
         <h2 class="chapter-title">Abstract</h2>
@@ -351,22 +378,10 @@
         <p style="text-align: left;">     While end-to-end video-to-audio generation has greatly improved, producing high-fidelity audio that authentically captures the nuances of visual content remains challenging. Like professionals in the creative industries, such generation requires sophisticated reasoning about items such as visual dynamics, acoustic environments, and temporal relationships. We present ThinkSound, a novel framework that leverages Chain-of-Thought (CoT) reasoning to enable stepwise, interactive audio generation and editing for videos. Our approach decomposes the process into three complementary stages: foundational foley generation that creates semantically coherent soundscapes, interactive object-centric refinement through precise user interactions, and targeted editing guided by natural language instructions. At each stage, a multimodal large language model generates contextually aligned CoT reasoning that guides a unified audio foundation model. Furthermore, we introduce AudioCoT, a comprehensive dataset with structured reasoning annotations that establishes connections between visual content, textual descriptions, and sound synthesis.  Experiments demonstrate that ThinkSound achieves state-of-the-art performance in video-to-audio generation across both audio metrics and CoT metrics and excels in out-of-distribution Movie Gen Audio benchmark.</p>
     </div>
     
-    <div class="video-carousel-section" style="text-align: center;">
-    <h2 class="chapter-title">Video Demo</h2>
-    <hr class="chapter-line">
-    <strong style="font-size: 19px; display: block; margin-bottom: 20px;">
-        🎧 Please wear headphones to experience the demo 🎥.
-    </strong>
 
-    <div class="carousel-container" style="display: flex; justify-content: center; align-items: center; position: relative;">
-        
-        
-        <div id="carousel" style="max-width: 700px; overflow: hidden ;margin: 0 auto;"></div>">
-            <!-- Current video will be inserted here -->
-        </div>
+    
 
-        
-    </div>
+    
 
     <div id="video-id" class="caption" style="margin-top: 10px; font-weight: bold;"></div>
 </div>
@@ -381,17 +396,28 @@ const videoPaths = [
 
 const carousel = document.getElementById('carousel');
 
+
+
+    
+
+    
+
+
 function createVideoCard(src, index) {
     const container = document.createElement('div');
     container.className = 'video-card';
 
     const video = document.createElement('video');
     video.src = src;
-    video.controls = true;
+    video.style.pointerEvents = 'auto'; 
+    video.style.cursor = 'pointer'; 
+    video.setAttribute('playsinline', '');
     video.style.width = '100%';
     video.style.borderRadius = '10px';
     video.style.backgroundColor = '#000';
-
+    video.addEventListener('click', () => {
+        video.paused ? video.play() : video.pause();
+    });
     video.addEventListener('play', () => {
         const left = container.offsetLeft - carousel.offsetWidth / 2 + container.offsetWidth / 2;
         carousel.scrollTo({ left, behavior: 'smooth' });
@@ -406,9 +432,15 @@ videoPaths.forEach((src, i) => {
 });
 
 setTimeout(() => {
-    const middleIndex = 1;
-    const cardWidth =  200; 
-    carousel.scrollLeft = cardWidth * middleIndex;
+    const cardWidth = 360;
+    const gap = 20;
+    const totalItemWidth = cardWidth/2+1.23*gap;
+
+    const middleIndex = Math.floor(videoPaths.length / 2)
+
+
+    carousel.scrollLeft = totalItemWidth + (middleIndex-1) *2 * totalItemWidth;
+
   const updateScales = () => {
     const containerCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
     
@@ -418,7 +450,7 @@ setTimeout(() => {
       // 使用相对位置比例计算缩放值（-1到1之间）
       const positionRatio = (cardCenter - containerCenter) / (carousel.offsetWidth * 0.8);
       // 使用余弦曲线实现平滑过渡
-      const scale = 0.9 + 0.28 * Math.cos(positionRatio * Math.PI);
+      const scale = 0.89 + 0.27 * Math.cos(positionRatio * Math.PI);
       
       card.style.transform = `scale(${scale})`;
       card.style.opacity = 0.8 + 0.2 * (1 - Math.abs(positionRatio));
