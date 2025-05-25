@@ -11,7 +11,7 @@
         font-family: 'Quicksand', sans-serif;
         text-align: center;
         padding: 0 20px 40px 20px;
-        background: linear-gradient(135deg, #c6c7c9, #fbfbfc);
+        background: linear-gradient(135deg, #fffffe, #f9fffe);
         width: 800px;
         margin: 40px auto;
         color: #344055;
@@ -348,7 +348,7 @@
     <div class="abstract" style="text-align: center;"></div>
         <h2 class="chapter-title">Abstract</h2>
         <hr class="chapter-line">
-        <p style="text-align: left;"> While end-to-end video-to-audio generation has greatly improved, producing high-fidelity audio that authentically captures the nuances of visual content remains challenging. Like professionals in the creative industries, such generation requires sophisticated reasoning about items such as visual dynamics, acoustic environments, and temporal relationships. We present ThinkSound, a novel framework that leverages Chain-of-Thought (CoT) reasoning to enable stepwise, interactive audio generation and editing for videos. Our approach decomposes the process into three complementary stages: foundational foley generation that creates semantically coherent soundscapes, interactive object-centric refinement through precise user interactions, and targeted editing guided by natural language instructions. At each stage, a multimodal large language model generates contextually aligned CoT reasoning that guides a unified audio foundation model. Furthermore, we introduce \textbf{AudioCoT}, a comprehensive dataset with structured reasoning annotations that establishes connections between visual content, textual descriptions, and sound synthesis.  Experiments demonstrate that ThinkSound achieves state-of-the-art performance in video-to-audio generation across both audio metrics and CoT metrics and excels in out-of-distribution Movie Gen Audio benchmark.</p>
+        <p style="text-align: left;">     While end-to-end video-to-audio generation has greatly improved, producing high-fidelity audio that authentically captures the nuances of visual content remains challenging. Like professionals in the creative industries, such generation requires sophisticated reasoning about items such as visual dynamics, acoustic environments, and temporal relationships. We present ThinkSound, a novel framework that leverages Chain-of-Thought (CoT) reasoning to enable stepwise, interactive audio generation and editing for videos. Our approach decomposes the process into three complementary stages: foundational foley generation that creates semantically coherent soundscapes, interactive object-centric refinement through precise user interactions, and targeted editing guided by natural language instructions. At each stage, a multimodal large language model generates contextually aligned CoT reasoning that guides a unified audio foundation model. Furthermore, we introduce AudioCoT, a comprehensive dataset with structured reasoning annotations that establishes connections between visual content, textual descriptions, and sound synthesis.  Experiments demonstrate that ThinkSound achieves state-of-the-art performance in video-to-audio generation across both audio metrics and CoT metrics and excels in out-of-distribution Movie Gen Audio benchmark.</p>
     </div>
     
     <div class="video-carousel-section" style="text-align: center;">
@@ -373,9 +373,10 @@
 
 <script>
 const videoPaths = [
-    "videos/video1.mp4",
-    "videos/video2.mp4",
-    "videos/video3.mp4"
+    "videos/demo_xsRyM_fXYI_000006.mp4",
+    "videos/demo_wNC03n2xmg_000211.mp4",
+    "videos/demo_SrU3mfTPYg_000032.mp4",
+    "videos/demo_rgOfS3NOSY_000108.mp4",
 ];
 
 const carousel = document.getElementById('carousel');
@@ -405,8 +406,8 @@ videoPaths.forEach((src, i) => {
 });
 
 setTimeout(() => {
-    const middleIndex = Math.floor(videoPaths.length / 2);
-    const cardWidth = 600 + 20; 
+    const middleIndex = 1;
+    const cardWidth =  200; 
     carousel.scrollLeft = cardWidth * middleIndex;
   const updateScales = () => {
     const containerCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
@@ -417,7 +418,7 @@ setTimeout(() => {
       // 使用相对位置比例计算缩放值（-1到1之间）
       const positionRatio = (cardCenter - containerCenter) / (carousel.offsetWidth * 0.8);
       // 使用余弦曲线实现平滑过渡
-      const scale = 0.9 + 0.3 * Math.cos(positionRatio * Math.PI);
+      const scale = 0.9 + 0.28 * Math.cos(positionRatio * Math.PI);
       
       card.style.transform = `scale(${scale})`;
       card.style.opacity = 0.8 + 0.2 * (1 - Math.abs(positionRatio));
