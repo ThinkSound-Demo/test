@@ -352,6 +352,60 @@
         margin-bottom: 4px;
     }
 
+    .extract-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        margin-bottom: 24px;
+    }
+
+    .extract-text {
+        width: 40%;
+        background-color: #ffffff;
+        border: 2px solid #8a8a83;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .extract-text label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+        color: #4b6e24;
+    }
+
+    .extract-text textarea {
+        width: 90%;
+        height: 100px;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #4ba495;
+        border-radius: 10px;
+        resize: vertical;
+        background-color: #93c79d;
+        color: #333;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .extract-row video {
+        width: 360px;
+        height: 180px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(90, 120, 160, 0.4);
+        background-color: #000;
+    }
+
+    .video-row-beautiful {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px; /* 控制每个视频之间的间距 */
+        margin-top: 24px;
+        flex-wrap: wrap; /* 小屏幕时自动换行 */
+    }
+
+
 
 </style>
 
@@ -515,9 +569,10 @@ carousel.addEventListener('mousemove', (e) => {
             
         </p>
         <div class="button-container" style="margin-top: 20px; justify-content: center; gap: 16px;">
-  <button class="sample-btn" data-set="set1">Sample Set 1</button>
-  <button class="sample-btn" data-set="set2">Sample Set 2</button>
-  <button class="sample-btn" data-set="set3">Sample Set 3</button>
+  <button class="sample-btn" data-set="set1">Drum</button>
+  <button class="sample-btn" data-set="set2">Drum</button>
+  <button class="sample-btn" data-set="set3">Drum</button>
+  <div id="video-row-container" style="display: none; margin-top: 20px; gap: 16px;"></div>
 </div>
 
 
@@ -545,35 +600,75 @@ carousel.addEventListener('mousemove', (e) => {
     color: #a3c4f3;
     box-shadow: inset 0 0 10px #557a95;
   }
-  #video-row-container video {
-    width: 220px;
-    height: 130px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(90, 120, 160, 0.4);
-    background-color: #000;
-  }
+    .video-row-beautiful {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-top: 24px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 12px;
+    }
+
+    .video-wrapper {
+        background: #f7f9fc;           /* 浅色卡片背景 */
+        padding: 12px 16px;
+        border-radius: 16px;           /* 更圆润 */
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); /* 柔和阴影 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+    }
+
+    .video-wrapper:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .video-wrapper video {
+        width: 100%;        
+        height: auto;    
+        border-radius: 12px;
+        background-color: #000;
+        box-shadow: 0 4px 14px rgba(90, 120, 160, 0.5);
+    }
+
+    .video-title {
+        margin-top: 12px;
+        font-size: 1.1rem;
+        color: #1e3559;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-align: center;
+        user-select: none;
+    }
+
 </style>
 
 <script>
   // 本地视频路径映射示例，需替换为你的实际路径
   const videoSets = {
     set1: {
-      gt: { video: 'videos/set1/gt.mp4', audio: 'audios/set1/gt.mp3' },
-      thinksound: { video: 'videos/set1/thinksound.mp4', audio: 'audios/set1/thinksound.mp3' },
-      baseline1: { video: 'videos/set1/baseline1.mp4', audio: 'audios/set1/baseline1.mp3' },
-      baseline2: { video: 'videos/set1/baseline2.mp4', audio: 'audios/set1/baseline2.mp3' },
+      gt: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/gt.mp3' },
+      thinksound: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/thinksound.mp3' },
+      baseline1: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline1.mp3' },
+      baseline2: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline2.mp3' },
     },
     set2: {
-      gt: { video: 'videos/set2/gt.mp4', audio: 'audios/set2/gt.mp3' },
-      thinksound: { video: 'videos/set2/thinksound.mp4', audio: 'audios/set2/thinksound.mp3' },
-      baseline1: { video: 'videos/set2/baseline1.mp4', audio: 'audios/set2/baseline1.mp3' },
-      baseline2: { video: 'videos/set2/baseline2.mp4', audio: 'audios/set2/baseline2.mp3' },
+      gt: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/gt.mp3' },
+      thinksound: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/thinksound.mp3' },
+      baseline1: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline1.mp3' },
+      baseline2: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline2.mp3' },
     },
     set3: {
-      gt: { video: 'videos/set3/gt.mp4', audio: 'audios/set3/gt.mp3' },
-      thinksound: { video: 'videos/set3/thinksound.mp4', audio: 'audios/set3/thinksound.mp3' },
-      baseline1: { video: 'videos/set3/baseline1.mp4', audio: 'audios/set3/baseline1.mp3' },
-      baseline2: { video: 'videos/set3/baseline2.mp4', audio: 'audios/set3/baseline2.mp3' },
+      gt: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/gt.mp3' },
+      thinksound: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/thinksound.mp3' },
+      baseline1: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline1.mp3' },
+      baseline2: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline2.mp3' },
     }
   };
 
@@ -683,14 +778,63 @@ carousel.addEventListener('mousemove', (e) => {
         <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;">
             
         </p>
-    </div>
+        <div class="video-row-beautiful">
+        <div class="video-wrapper">
+        <video src="videos/demo_2hETAEaX3c_000106.mp4"playsinline></video>
+        <div class="video-title">title</div>
+        </div>
+        <div class="video-wrapper">
+        <video src="videos/demo_2hETAEaX3c_000106.mp4"playsinline></video>
+        <div class="video-title">title</div>
+        </div>
+        <div class="video-wrapper">
+        <video src="videos/demo_2hETAEaX3c_000106.mp4"playsinline></video>
+        <div class="video-title">title</div>
+        </div>
+        <script>
+        document.querySelectorAll('video').forEach(video => {
+                video.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+                });
+            });
+        </script>
+  </div>
 
+        
     <div class="image-container">
         <h2 class="chapter-title">Audio Editing</h2>
         <hr class="chapter-line">
         <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;">
-            
+            Below are examples showing editing audios with associated videos and notes.
         </p>
+
+        <div class="extract-row">
+    <div class="extract-text">
+        <label>Cot:</label>
+        <textarea placeholder="Describe this audio...">This video contains speech and background music.</textarea>
+        </div>
+        <video src="videos/sample1.mp4" controls playsinline muted></video>
+    </div>
+
+    <div class="extract-row">
+        <div class="extract-text">
+        <label>Cot:</label>
+        <textarea placeholder="Describe this audio...">Short ambient clip, extracted from nature scene.</textarea>
+        </div>
+        <video src="videos/sample2.mp4" controls playsinline muted></video>
+    </div>
+
+    <div class="extract-row">
+        <div class="extract-text">
+        <label>Cot:</label>
+        <textarea placeholder="Describe this audio...">Urban environment, car honking and traffic.</textarea>
+        </div>
+        <video src="videos/sample3.mp4" controls playsinline muted></video>
+    </div>
     </div>
         
         
