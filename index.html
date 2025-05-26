@@ -469,9 +469,7 @@ function createVideoCard(src, index) {
     video.style.width = '100%';
     video.style.borderRadius = '10px';
     video.style.backgroundColor = '#000';
-    video.addEventListener('click', () => {
-        video.paused ? video.play() : video.pause();
-    });
+
     video.addEventListener('play', () => {
         const left = container.offsetLeft - carousel.offsetWidth / 2 + container.offsetWidth / 2;
         carousel.scrollTo({ left, behavior: 'smooth' });
