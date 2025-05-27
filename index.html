@@ -442,10 +442,11 @@
 
 <script>
 const videoPaths = [
-    "videos/demo_xsRyM_fXYI_000006.mp4",
-    "videos/demo_wNC03n2xmg_000211.mp4",
-    "videos/demo_SrU3mfTPYg_000032.mp4",
-    "videos/demo_rgOfS3NOSY_000108.mp4",
+    "demos/ours_vgg/_ZC6yk5iE1I_000026.mp4",
+    "demos/ours_vgg/_AUtYTaYMrE_000100.mp4",
+    "demos/ours_vgg/4p8n4Zf-WMM_000190.mp4",
+    "demos/ours_vgg/_VVrGTbA78k_000124.mp4",
+    "demos/ours_vgg/Rp39_WnX5Fk_000380.mp4",
 ];
 
 const carousel = document.getElementById('carousel');
@@ -491,7 +492,7 @@ setTimeout(() => {
     const middleIndex = Math.floor(videoPaths.length / 2)
 
 
-    carousel.scrollLeft = totalItemWidth + (middleIndex-1) *2 * totalItemWidth;
+    carousel.scrollLeft = 3*totalItemWidth + (middleIndex-1) *2 * totalItemWidth;
 
   const updateScales = () => {
     const containerCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
@@ -567,9 +568,14 @@ carousel.addEventListener('mousemove', (e) => {
             
         </p>
         <div class="button-container" style="margin-top: 20px; justify-content: center; gap: 16px;">
-  <button class="sample-btn" data-set="set1">Drum</button>
-  <button class="sample-btn" data-set="set2">Drum</button>
-  <button class="sample-btn" data-set="set3">Drum</button>
+  <button class="sample-btn" data-set="set1">Electric Saw</button>
+  <button class="sample-btn" data-set="set2">Drum Hit</button>
+  <button class="sample-btn" data-set="set3">Animals Splashing</button>
+  <button class="sample-btn" data-set="set4">Street Parade</button>
+  <button class="sample-btn" data-set="set5">Musical Ensemble</button>
+  <button class="sample-btn" data-set="set6">Ocean Waves</button>
+  <button class="sample-btn" data-set="set7">Sewing Machine</button>
+  <button class="sample-btn" data-set="set8">Cat Swatting</button>
   <div id="video-row-container" style="display: none; margin-top: 20px; gap: 16px;"></div>
 </div>
 
@@ -648,26 +654,58 @@ carousel.addEventListener('mousemove', (e) => {
 </style>
 
 <script>
-  // 本地视频路径映射示例，需替换为你的实际路径
   const videoSets = {
     set1: {
-      gt: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/gt.mp3' },
-      thinksound: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/thinksound.mp3' },
-      baseline1: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline1.mp3' },
-      baseline2: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline2.mp3' },
+        "thinksound": { video: 'demos/ours_vgg/-23CeprtibU_000030.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/-23CeprtibU_000030.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/-23CeprtibU_000030.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/-23CeprtibU_000030.mp4' }
     },
     set2: {
-      gt: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/gt.mp3' },
-      thinksound: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/thinksound.mp3' },
-      baseline1: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline1.mp3' },
-      baseline2: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline2.mp3' },
+        "thinksound": { video: 'demos/ours_vgg/JFG4YvcJ3bo_000228.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/JFG4YvcJ3bo_000228.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/JFG4YvcJ3bo_000228.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/JFG4YvcJ3bo_000228.mp4' }
     },
     set3: {
-      gt: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/gt.mp3' },
-      thinksound: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/thinksound.mp3' },
-      baseline1: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline1.mp3' },
-      baseline2: { video: 'videos/demo_rgOfS3NOSY_000108.mp4', audio: 'audios/set1/baseline2.mp3' },
-    }
+        "thinksound": { video: 'demos/ours_vgg/-c6baaENcjA_000204.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/-c6baaENcjA_000204.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/-c6baaENcjA_000204.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/-c6baaENcjA_000204.mp4' }
+    },
+    set4: {
+        "thinksound": { video: 'demos/ours_vgg/3ypSlMWAZeo_000239.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/3ypSlMWAZeo_000239.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/3ypSlMWAZeo_000239.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/3ypSlMWAZeo_000239.mp4' }
+    },
+    set5: {
+        "thinksound": { video: 'demos/ours_vgg/4hYiaSYueCE_000060.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/4hYiaSYueCE_000060.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/4hYiaSYueCE_000060.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/4hYiaSYueCE_000060.mp4' }
+    },
+    set6: {
+        "thinksound": { video: 'demos/ours_vgg/1K1hxgzudsM_000047.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/1K1hxgzudsM_000047.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/1K1hxgzudsM_000047.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/1K1hxgzudsM_000047.mp4' }
+    },
+    set7: {
+        "thinksound": { video: 'demos/ours_vgg/55L7peYRB_Q_000120.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/55L7peYRB_Q_000120.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/55L7peYRB_Q_000120.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/55L7peYRB_Q_000120.mp4' }
+    },
+    set8: {
+        "thinksound": { video: 'demos/ours_vgg/1pViEqMXJH0_000030.mp4' },
+        "mmaudio": { video: 'demos/mmaudio_vgg/1pViEqMXJH0_000030.mp4' },
+        "foleycrafter": { video: 'demos/foleycrafter-vgg/1pViEqMXJH0_000030.mp4' },
+        "V-AURA": { video: 'demos/V-AURA-vgg/1pViEqMXJH0_000030.mp4' }
+    },
+
+    
+
   };
 
   const btns = document.querySelectorAll('.sample-btn');
@@ -702,7 +740,7 @@ carousel.addEventListener('mousemove', (e) => {
         const video = document.createElement('video');
         video.src = paths.video;
         video.controls = true;
-        video.muted = true;  // 静音视频
+        video.muted = false;  // 静音视频
         video.setAttribute('playsinline', ''); // 移动端兼容
         video.style.width = '220px';
         video.style.height = '130px';
@@ -710,28 +748,6 @@ carousel.addEventListener('mousemove', (e) => {
         video.style.boxShadow = '0 4px 12px rgba(90, 120, 160, 0.4)';
         video.style.backgroundColor = '#000';
 
-        // 创建音频元素
-        const audio = document.createElement('audio');
-        audio.src = paths.audio;
-        audio.preload = 'auto';
-
-        // 同步播放音频和视频
-        video.addEventListener('play', () => {
-          audio.currentTime = video.currentTime;
-          audio.play();
-        });
-        video.addEventListener('pause', () => {
-          audio.pause();
-        });
-        video.addEventListener('seeking', () => {
-          audio.currentTime = video.currentTime;
-        });
-        video.addEventListener('ended', () => {
-          audio.pause();
-          audio.currentTime = 0;
-        });
-
-        currentAudioElements.push(audio);
 
         // 包装视频和标题
         const wrapper = document.createElement('div');
@@ -778,16 +794,16 @@ carousel.addEventListener('mousemove', (e) => {
         </p>
         <div class="video-row-beautiful">
         <div class="video-wrapper">
-        <video src="videos/demo_2hETAEaX3c_000106.mp4"playsinline></video>
-        <div class="video-title">title</div>
+        <video src="demos/ours_vgg/1u1orBeV4xI_000428.mp4"playsinline></video>
+        <div class="video-title">Tear Paper</div>
         </div>
         <div class="video-wrapper">
-        <video src="videos/demo_2hETAEaX3c_000106.mp4"playsinline></video>
-        <div class="video-title">title</div>
+        <video src="demos/ours_vgg/_Betmm6FaWo_000096.mp4"playsinline></video>
+        <div class="video-title">Write and Erase</div>
         </div>
         <div class="video-wrapper">
-        <video src="videos/demo_2hETAEaX3c_000106.mp4"playsinline></video>
-        <div class="video-title">title</div>
+        <video src="videos/demo_SrU3mfTPYg_000032.mp4"playsinline></video>
+        <div class="video-title">String Instrument</div>
         </div>
         <script>
         document.querySelectorAll('video').forEach(video => {
