@@ -418,17 +418,19 @@
         border: 1px solid #ddd;
         padding: 8px;
         text-align: center;
+        background-color: #fff;
     }
 
     #video-table th {
         background-color: #f3f6fa;
         font-weight: 600;
+        font-size: 14px; 
         color: #24446e;
     }
-
-    #video-table td {
-        background-color: #fff;
+    #video-table tbody td {
+    font-size: 14px;
     }
+
 
     #video-table video {
         width: 160px;
@@ -515,16 +517,16 @@
     .table-wrapper {
             overflow-x: auto;
             margin-top: 16px;
-            width: 55vw;
+            width: 60vw;
             position: relative;
-            left: 50%;
+            left: 55%;
             padding-right: 10vw;
             transform: translateX(-50%);
     }
     #toggle-cols-btn {
             position: absolute;
-            top: 1400px;
-            right: 200px;
+            top: 1550px;
+            right: 170px;
             z-index: 1000;
             transform: translateY(-50%);
             padding: 12px 8px;
@@ -845,21 +847,65 @@ carousel.addEventListener('mousemove', (e) => {
         "V2A-Mapper":      { video: 'compare/V2A-Mapper-vgg_best/_ZC6yk5iE1I_000026.mp4' },
     },
 
+    set13: {
+        "Ground Truth":    { video: 'compare/gt_video_best/_Betmm6FaWo_000096.mp4' },
+        "ThinkSound":      { video: 'compare/think_sound_best/_Betmm6FaWo_000096.mp4' },
+        "MMAudio":         { video: 'compare/mmaudio_vgg_best/_Betmm6FaWo_000096.mp4' },
+        "See&Hear":    { video: 'compare/seeing_vgg_best/_Betmm6FaWo_000096.mp4' },
+        "V-AURA":          { video: 'compare/V-AURA-vgg_best/_Betmm6FaWo_000096.mp4' },
+        "Frieren":         { video: 'compare/Frieren_vgg_best/_Betmm6FaWo_000096.mp4' },
+        "V2A-Mapper":      { video: 'compare/V2A-Mapper-vgg_best/_Betmm6FaWo_000096.mp4' },
+    },
+
+    set14: {
+        "Ground Truth":    { video: 'compare/gt_video_best/0W_wPc-zV3I_000101.mp4' },
+        "ThinkSound":      { video: 'compare/think_sound_best/0W_wPc-zV3I_000101.mp4' },
+        "MMAudio":         { video: 'compare/mmaudio_vgg_best/0W_wPc-zV3I_000101.mp4' },
+        "See&Hear":    { video: 'compare/seeing_vgg_best/0W_wPc-zV3I_000101.mp4' },
+        "V-AURA":          { video: 'compare/V-AURA-vgg_best/0W_wPc-zV3I_000101.mp4' },
+        "Frieren":         { video: 'compare/Frieren_vgg_best/0W_wPc-zV3I_000101.mp4' },
+        "V2A-Mapper":      { video: 'compare/V2A-Mapper-vgg_best/0W_wPc-zV3I_000101.mp4' },
+    },
+
+    set15: {
+        "Ground Truth":    { video: 'compare/gt_video_best/4p8n4Zf-WMM_000190.mp4' },
+        "ThinkSound":      { video: 'compare/think_sound_best/4p8n4Zf-WMM_000190.mp4' },
+        "MMAudio":         { video: 'compare/mmaudio_vgg_best/4p8n4Zf-WMM_000190.mp4' },
+        "See&Hear":    { video: 'compare/seeing_vgg_best/4p8n4Zf-WMM_000190.mp4' },
+        "V-AURA":          { video: 'compare/V-AURA-vgg_best/4p8n4Zf-WMM_000190.mp4' },
+        "Frieren":         { video: 'compare/Frieren_vgg_best/4p8n4Zf-WMM_000190.mp4' },
+        "V2A-Mapper":      { video: 'compare/V2A-Mapper-vgg_best/4p8n4Zf-WMM_000190.mp4' },
+    },
+
+    set16: {
+        "Ground Truth":    { video: 'compare/gt_video_best/W1nb2hIeDKc_000021.mp4' },
+        "ThinkSound":      { video: 'compare/think_sound_best/W1nb2hIeDKc_000021.mp4' },
+        "MMAudio":         { video: 'compare/mmaudio_vgg_best/W1nb2hIeDKc_000021.mp4' },
+        "See&Hear":    { video: 'compare/seeing_vgg_best/W1nb2hIeDKc_000021.mp4' },
+        "V-AURA":          { video: 'compare/V-AURA-vgg_best/W1nb2hIeDKc_000021.mp4' },
+        "Frieren":         { video: 'compare/Frieren_vgg_best/W1nb2hIeDKc_000021.mp4' },
+        "V2A-Mapper":      { video: 'compare/V2A-Mapper-vgg_best/W1nb2hIeDKc_000021.mp4' },
+    },
+
 
   };
   const displayMap = {
-        set1: 'Tennis Match',
-        set2: 'Cat Swatting',
-        set3: 'Tear Paper',
-        set4: 'Sewing Machine',
-        set5: 'Drum Hit',
-        set6: 'Passing Train',
-        set7: 'Chop Meat',
-        set8: 'Eating',
-        set9: 'Scoop Up',
-        set10: 'Skateboard',
-        set11: 'Chop Wood',
-        set12: 'Wind Instrument',
+        set1: 'Playing Tennis\n Generate sounds of tennis hitting a racket and the ball bouncing, with distant tennis court ambient noise. Avoid unrelated sounds like horses, basketballs, or indoor voices. Focus on clear tennis scene with realistic audio cues.',
+        set2: 'Printer Printing\nGenerate a continuous printer printing sound with periodic beeps and paper movement, plus a cat pawing at the machine. Add subtle ambient room noise for authenticity, keeping the focus on printing, beeps, and the cat’s interaction.',
+        set3: 'Ripping Paper\nStart with a subtle tearing sound of paper being ripped, emphasizing a continuous, consistent noise. Ensure the sound has slight variations to mimic real tearing. No background or additional noises are needed, focusing solely on the tearing action.',
+        set4: 'Using Sewing Machines\nGenerate ambient sewing room sounds with consistent sewing machine hum, minimal background noise, and no human voices, focusing on characteristic machine noise to match the correct descriptions.',
+        set5: 'Playing Bongo\nGenerate a lively percussion track featuring only rhythmic drum beats—no other instruments or voices. Maintain a natural, well-balanced stereo mix to showcase the drums.',
+        set6: 'Ground Train, Railway Environment\nGenerate ground train sounds including ambient railway environment noise, engine hum, wheels on tracks, and the changing sound of the train approaching.',
+        set7: 'Chopping Food\nGenerate rhythmic chopping sounds consistent with cutting meat or vegetables, with occasional plastic bag rustles. Include ambient marketplace noise—vendors calling out, customers chatting, and cart wheels—to create a realistic outdoor market chopping scene.',
+        set8: 'People Eating Crisps\nGenerate audio focusing on clear, rhythmic chewing sounds of eating, without any crinkling paper or breathing noises. Maintain a natural, well-balanced mix to highlight the chewing activity.',
+        set9: 'Plastic Debris Handling\nBegin with the sound of hands scooping up loose plastic debris, followed by the subtle cascading noise as the pieces fall and scatter back down. Include soft crinkling and rustling to emphasize the texture of the plastic. Add ambient factory background noise with distant machinery to create an industrial atmosphere.',
+        set10: 'Skateboarding\nGenerate the audio featuring skateboarding sounds with wheels rolling on various surfaces, including ramps, rails, and sidewalks, capturing the sound of tricks and landings. Include subtle ambient background noise to suggest an outdoor setting, avoiding any human voices or singing. Focus on realistic skateboarding sounds, emphasizing wheel contact, impacts, and movement.',
+        set11: 'Hammering Nails\nGenerate audio with consistent hammering sounds, featuring a rhythmic pattern of nails being driven into a surface, with occasional ambient background sounds like birds chirping and distant traffic. Avoid human voices, focusing on realistic hammer strikes and natural outdoor environment sounds. Ensure the hammering tone is steady and clear, matching the description of continuous nail hammering.',
+        set12: 'Playing Trumpet\nGenerate a continuous trumpet sound with melodic variations, mimicking the sound of a person playing the trumpet ideally in a musical setting, ensuring clarity and realistic tone. Avoid extraneous noise or background sounds to reflect the focus on trumpet playing. The audio should resemble a skilled player producing expressive, melodious trumpet notes. Pay attention to pitch changes caused by hand movements.',
+        set13: 'Writing on Blackboard with Chalk\nThe audio should feature consistent sounds of chalk scratching the blackboard, including occasional voice instructions, encouragement, and children’s chatter, with background music playing softly or fading in/out to match the scene\'s atmosphere. The sounds of laughter and chatter should be lively but balanced with the primary chalk and voice sounds for clarity. Overall, the audio combines educational sounds with background activity to reflect a classroom or play environment.',
+        set14: 'Hedge Trimmer Running\nGenerate the sound of a hedge trimmer running steadily, focusing on consistent motor noise and cutting sounds. Ensure minimal background noise or voices, capturing the primary sound of the trimmer in operation. Avoid including any chainsaw or unrelated sounds for accuracy.',
+        set15: 'Lighting Firecrackers\nGenerate the sound of firecrackers lighting and exploding repeatedly on the ground, followed by fireworks bursting in the sky. Incorporate occasional subtle echoes to mimic an outdoor night ambiance, with no human voices present.',
+        set16: 'Striking Bowling\nStart with a background of ambient music to set the scene of a bowling game, then add consistent sounds of bowling balls striking pins to emphasize the action. Include occasional subtle sounds of pins rattling and settling. Keep human voices or other noises minimal or absent for authenticity.',
     };
   
     const table = document.getElementById('video-table');
@@ -868,7 +914,7 @@ carousel.addEventListener('mousemove', (e) => {
 
     const thead = document.createElement('thead');
     const headRow = document.createElement('tr');
-    headRow.appendChild(Object.assign(document.createElement('th'), { textContent: 'Set' }));
+    headRow.appendChild(Object.assign(document.createElement('th'), { textContent: 'CoT' }));
     methods.forEach(m => headRow.appendChild(Object.assign(document.createElement('th'), { textContent: m })));
     thead.appendChild(headRow);
     table.appendChild(thead);
@@ -879,7 +925,7 @@ carousel.addEventListener('mousemove', (e) => {
       const tr = document.createElement('tr');
       if (rowIndex >= 4) tr.style.display = 'none';
       tr.appendChild(Object.assign(document.createElement('th'), {
-        textContent: displayMap[setName] ||setName,
+        innerHTML: (displayMap[setName] || setName).replace(/\n/g, '<br>'),
         style: 'background-color:#eef2f7; color:#24446e;'
       }));
       methods.forEach(m => {
@@ -896,7 +942,7 @@ carousel.addEventListener('mousemove', (e) => {
     table.appendChild(tbody);
 
     // 列切换
-    const hideColFrom = 5;
+    const hideColFrom = 4;
     function setColumnDisplay(showAll) {
       table.querySelectorAll('thead th').forEach((th, i) => th.style.display = i >= hideColFrom && !showAll ? 'none' : '');
       tbody.querySelectorAll('tr').forEach(row => {
@@ -938,12 +984,12 @@ carousel.addEventListener('mousemove', (e) => {
         </p>
         <div class="video-row-beautiful">
         <div class="video-wrapper">
-        <video src="demos/ours_vgg/1u1orBeV4xI_000428.mp4"playsinline></video>
-        <div class="video-title">Tear Paper</div>
+        <video src="videos/demo_SrU3mfTPYg_000032.mp4"playsinline></video>
+        <div class="video-title">String Instrument</div>
         </div>
         <div class="video-wrapper">
-        <video src="demos/ours_vgg/_Betmm6FaWo_000096.mp4"playsinline></video>
-        <div class="video-title">Write and Erase</div>
+        <video src="videos/demo_SrU3mfTPYg_000032.mp4"playsinline></video>
+        <div class="video-title">String Instrument</div>
         </div>
         <div class="video-wrapper">
         <video src="videos/demo_SrU3mfTPYg_000032.mp4"playsinline></video>
