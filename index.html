@@ -463,7 +463,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 200px;
+        width: 120px;
         transition: transform 0.25s ease, box-shadow 0.25s ease;
         cursor: pointer;
     }
@@ -525,7 +525,7 @@
     }
     #toggle-cols-btn {
             position: absolute;
-            top: 1550px;
+            top: 1540px;
             right: 170px;
             z-index: 1000;
             transform: translateY(-50%);
@@ -549,6 +549,17 @@
             background-color: #3a69b4;
             transform: translateY(-50%) scale(1.05);
         }
+        .video-wrapper img {
+            width: 90%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+        .poster-img {
+            width: 120px;
+            height: auto;  
+        }
+
 
 
 </style>
@@ -614,6 +625,22 @@ function createVideoCard(src, index) {
     video.style.width = '100%';
     video.style.borderRadius = '10px';
     video.style.backgroundColor = '#000';
+    const status = document.createElement('div');
+    status.className = 'status-indicator';
+    status.textContent = '▶';            // 初始为“播放”图标
+    Object.assign(status.style, {
+      position: 'absolute',
+      bottom: '8px',
+      left: '8px',
+      fontSize: '1.5em',
+      color: 'white',
+      textShadow: '0 0 4px rgba(0,0,0,0.6)',
+      pointerEvents: 'none',           
+    });
+
+
+    video.addEventListener('play', () =>  status.textContent = '❚❚' );
+    video.addEventListener('pause', () => status.textContent = '▶'   );
 
     video.addEventListener('play', () => {
         const left = container.offsetLeft - carousel.offsetWidth / 2 + container.offsetWidth / 2;
@@ -621,6 +648,7 @@ function createVideoCard(src, index) {
     });
 
     container.appendChild(video);
+    container.appendChild(status);
     return container;
 }
 
@@ -845,7 +873,7 @@ carousel.addEventListener('mousemove', (e) => {
         "V-AURA":          { video: 'https://github.com/user-attachments/assets/5a9c04d2-e9be-428b-b6b6-85dd81b12a66' },
         "Frieren":         { video: 'https://github.com/user-attachments/assets/927ceed0-ddbd-4036-bb17-3ab6f157f6e0' },
         "V2A-Mapper":      { video: 'https://github.com/user-attachments/assets/b1492f4c-4f14-4f5d-942f-6251f4979e5f' },
-        "FoleyCrafter":      { video: 'compare/best_foleycrafter/_XyxrZDZ36E_000034.mp4' },
+        "FoleyCrafter":      { video: 'https://github.com/user-attachments/assets/1189eb9d-e8e3-4ff6-8c9b-94a90f455ef8' },
     },
 
     set12: {
@@ -856,7 +884,7 @@ carousel.addEventListener('mousemove', (e) => {
         "V-AURA":          { video: 'https://github.com/user-attachments/assets/f4e51f75-b028-403e-b8b6-4dbb9bc66dcb' },
         "Frieren":         { video: 'https://github.com/user-attachments/assets/a3247785-8a4a-4c0d-bba7-714ba2d27a23' },
         "V2A-Mapper":      { video: 'https://github.com/user-attachments/assets/980ce318-c8a3-4757-84ac-e46803599adb' },
-        "FoleyCrafter":      { video: 'compare/best_foleycrafter/_ZC6yk5iE1I_000026.mp4' },
+        "FoleyCrafter":      { video: 'https://github.com/user-attachments/assets/8f660ae6-5b3f-459d-ac97-f5f0819b199f' },
     },
 
     set13: {
@@ -867,7 +895,7 @@ carousel.addEventListener('mousemove', (e) => {
         "V-AURA":          { video: 'https://github.com/user-attachments/assets/c5145c4f-8d10-4ac0-9ff5-535ea8216b9d' },
         "Frieren":         { video: 'https://github.com/user-attachments/assets/d78627ac-56d4-4789-81d9-3167a54d42a5' },
         "V2A-Mapper":      { video: 'https://github.com/user-attachments/assets/e4a4c58f-55e7-428a-b795-761f3695a601' },
-        "FoleyCrafter":      { video: 'compare/best_foleycrafter/_Betmm6FaWo_000096.mp4' },
+        "FoleyCrafter":      { video: 'https://github.com/user-attachments/assets/6e21d20b-b4bc-4d92-b532-94c6d1b6435c' },
     },
 
     set14: {
@@ -924,6 +952,24 @@ carousel.addEventListener('mousemove', (e) => {
         set16: 'Striking Bowling\nStart with a background of ambient music to set the scene of a bowling game, then add consistent sounds of bowling balls striking pins to emphasize the action. Include occasional subtle sounds of pins rattling and settling. Keep human voices or other noises minimal or absent for authenticity.',
     };
   
+    const posterMap = {
+        set1: 'first_frames/-KqXcm-I2zY_000087.jpg',
+        set2: 'first_frames/1pViEqMXJH0_000030.jpg',
+        set3: 'first_frames/1u1orBeV4xI_000428.jpg',
+        set4: 'first_frames/55L7peYRB_Q_000120.jpg',
+        set5: 'first_frames/JFG4YvcJ3bo_000228.jpg',
+        set6: 'first_frames/Rp39_WnX5Fk_000380.jpg',
+        set7: 'first_frames/xmTfE3F2huE_000854.jpg',
+        set8: 'first_frames/yLazKv68TeA_000078.jpg',
+        set9: 'first_frames/YYRdv32TJnc_000184.jpg',
+        set10: 'first_frames/ZaUaqnLdg6k_000030.jpg',
+        set11: 'first_frames/_XyxrZDZ36E_000034.jpg',
+        set12: 'first_frames/_ZC6yk5iE1I_000026.jpg',
+        set13: 'first_frames/_Betmm6FaWo_000096.jpg',
+        set14: 'first_frames/0W_wPc-zV3I_000101.jpg',
+        set15: 'first_frames/4p8n4Zf-WMM_000190.jpg',
+        set16: 'first_frames/W1nb2hIeDKc_000021.jpg'
+    };
     const table = document.getElementById('video-table');
     const methods = Object.keys(videoSets.set1);
 
@@ -946,28 +992,49 @@ carousel.addEventListener('mousemove', (e) => {
       }));
       methods.forEach(m => {
         const td = document.createElement('td');
-        const vid = document.createElement('video');
-        vid.src = variants[m].video;
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('video-wrapper');
+        wrapper.style.cursor = 'pointer';  // 鼠标悬停时显示手型
 
-        vid.dataset.src = variants[m].video;
-        // 只加载 metadata（包括第一帧画面），不下载流数据
-        vid.preload = 'metadata';
+        // 海报图
+        const img = document.createElement('img');
+        img.src = posterMap[setName];   // 每个 set 的首帧图片
+        img.style.width = '100%';
+        img.style.display = 'block';
+        wrapper.appendChild(img);
 
+        // 点击 wrapper（或 img）时，替换成 video 并播放
+        wrapper.addEventListener('click', () => {
+        const video = document.createElement('video');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('controls', '');
+        video.autoplay = true;
+        video.classList.add('loaded-video');
+        video.src = variants[m].video;  // 设置 src 即会下载并播放
+        // 清空 wrapper，插入 video
+        wrapper.innerHTML = '';
+        wrapper.appendChild(video);
+        });
 
-        vid.setAttribute('playsinline', '');
-        vid.controls = true;
-        
-        vid.addEventListener('play', () => {
-          if (!vid.src) vid.src = vid.dataset.src;
-        }, { once: true });
-
-        td.appendChild(vid);
+        td.appendChild(wrapper);
         tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
+    });
+
+    tbody.appendChild(tr);
     });
     table.appendChild(tbody);
 
+    document.querySelectorAll('.lazy-video').forEach(vid => {
+        vid.addEventListener('play', function onPlay() {
+            const source = this.querySelector('source');
+            if (!source.src) {
+            source.src = this.dataset.src;
+            this.load();
+            this.play();
+            }
+            this.removeEventListener('play', onPlay);
+        });
+        });
     // 列切换
     const hideColFrom = 4;
     function setColumnDisplay(showAll) {
