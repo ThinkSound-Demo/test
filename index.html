@@ -1374,14 +1374,14 @@ carousel.addEventListener('mousemove', (e) => {
 
   table2.appendChild(tbody2);
   tbody2.querySelectorAll('tr').forEach((tr, idx) => {
-    tr.style.display = idx >= 2 ? 'none' : '';
+    tr.style.display = idx >= 4 ? 'none' : '';
     });
   const rowsBtn2 = document.getElementById('toggle-rows-btn3');
     let rowsExpanded2 = false;
     rowsBtn2.addEventListener('click', () => {
       rowsExpanded2 = !rowsExpanded2;
       tbody2.querySelectorAll('tr').forEach((tr, idx) => {
-        tr.style.display = idx >= 2 && !rowsExpanded2 ? 'none' : '';
+        tr.style.display = idx >= 4 && !rowsExpanded2 ? 'none' : '';
       });
       rowsBtn2.textContent = rowsExpanded2 ? 'Collapse' : 'Show More Cases';
     });
