@@ -499,7 +499,7 @@
     }
 
 
-    #toggle-rows-btn {
+    .toggle-rows-btn {
         display: inline-block;
         margin-top: 12px;
         padding: 8px 20px;
@@ -513,11 +513,11 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    #toggle-rows-btn:hover {
+    .toggle-rows-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
     }
-    #toggle-rows-btn:active {
+    .toggle-rows-btn:active {
         transform: translateY(0);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -876,8 +876,8 @@ carousel.addEventListener('mousemove', (e) => {
         </p>
 
         <div style="white-space: nowrap;">
-            <h3 class="video-title"style="margin: 0 auto;">Veo3 + ThinkSound</h3>
             <div style="display: inline-block; width: 48%; vertical-align: top; margin-right: 3%;">
+                <h3 class="video-title"style="margin: 0 auto;">Veo3 + ThinkSound</h3>
                 <video class="video-card" controls style="width: 100%;">
                     <source src="compare/veo3/veo3.mp4" type="video/mp4">
                     not supported.
@@ -885,16 +885,17 @@ carousel.addEventListener('mousemove', (e) => {
             </div>
 
             <div style="display: inline-block; width: 48%; vertical-align: top;">
+                <h3 class="video-title"style="margin: 0 auto;">Sora + ThinkSound</h3>
                 <video class="video-card" controls style="width: 100%;">
-                    <source src="compare/veo3/veo3_.mp4" type="video/mp4">
+                    <source src="compare/sora/sora.mp4" type="video/mp4">
                     not supported.
                 </video>
             </div>
         </div>
 
         <div style="white-space: nowrap;">
-            <h3 class="video-title"style="margin: 0 auto;">Movie Gen + ThinkSound</h3>
             <div style="display: inline-block; width: 48%; vertical-align: top; margin-right: 3%;">
+                <h3 class="video-title"style="margin: 0 auto;">Movie Gen + ThinkSound</h3>
                 <video class="video-card" controls style="width: 100%;">
                     <source src="compare/Moviegen/moviegen.mp4" type="video/mp4">
                     not supported.
@@ -922,8 +923,8 @@ carousel.addEventListener('mousemove', (e) => {
             
             
         </div>
-        <button id="toggle-cols-btn">Show All Baselines</button>
-        <button id="toggle-rows-btn">Show More Cases</button>
+        <button id="toggle-rows-btn1" class="toggle-rows-btn">Show All Baselines</button>
+        <button id="toggle-rows-btn2" class="toggle-rows-btn">Show More Cases</button>
     </div>
 
 
@@ -1222,7 +1223,7 @@ carousel.addEventListener('mousemove', (e) => {
       });
     }
     setColumnDisplay(false);
-    const colsBtn = document.getElementById('toggle-cols-btn');
+    const colsBtn = document.getElementById('toggle-rows-btn1');
     let colsExpanded = false;
     colsBtn.addEventListener('click', () => {
       colsExpanded = !colsExpanded;
@@ -1231,7 +1232,7 @@ carousel.addEventListener('mousemove', (e) => {
     });
 
 
-    const rowsBtn = document.getElementById('toggle-rows-btn');
+    const rowsBtn = document.getElementById('toggle-rows-btn2');
     let rowsExpanded = false;
     rowsBtn.addEventListener('click', () => {
       rowsExpanded = !rowsExpanded;
