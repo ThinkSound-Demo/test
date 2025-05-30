@@ -1242,6 +1242,151 @@ carousel.addEventListener('mousemove', (e) => {
 </script>
 
         
+
+    <div class="image-container">
+        <h2 class="chapter-title">Comparisons on Movie Gen Audio Bench Out-of-Distribution</h2>
+        <hr class="chapter-line">
+        <p style="text-align: center; font-size: 16px; max-width: 96%; color: #333">
+            Play or pause any video by clicking on it.
+        </p>
+
+        <div class="table-wrapper">
+            <table id="video-table2">
+            </table>
+        </div>
+    </div>
+<script>
+  const videoSets2 = {
+    set1: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/10.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/10.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/10.mp4' },
+    },
+    set2: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/104.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/104.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/104.mp4' },
+    },
+    set3: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/114.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/114.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/114.mp4' },
+    },
+    set4: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/284.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/284.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/284.mp4' },
+    },   
+    set5: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/326.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/326.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/326.mp4' },
+    },
+    set6: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/396.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/396.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/396.mp4' },
+    },
+    set7: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/402.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/402.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/402.mp4' },
+    },
+    set8: {
+        "ThinkSound":      { video: 'compare/mg_demos/our_mg/485.mp4' },
+        "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/485.mp4' },
+        "movie Gen":        { video: 'compare/mg_demos/moviegen_mg/485.mp4' },
+    }
+  };
+
+  const displayMap2 = {
+    set1: 'Gentle Sucking Sounds From the Pacifier\nBegin by Creating a soft, consistent background of sucking noises. Add subtle, rhythmic suckling to mimic a baby with a pacifier. Keep the sound smooth, natural, and steady for a soothing effect.',
+    set2: 'Coffee Pouring with a Smooth Gurgling Sound\nStart with a gentle pour of hot coffee into a cup, adding smooth gurgling to match the flow. Layer soft steam sounds to suggest heat. Keep the overall audio calm and continuous to reflect a peaceful coffee-pouring scene.',
+    set3: 'Strings Humming and Buzzing Harmoniously, with Fingers Sliding and Pressing Strings.\nStart with acoustic guitar strings humming and buzzing. Simulate fingers sliding and pressing strings to match a riff. Add slight attack and decay variations to mimic playing. Mix string and finger sounds for a realistic guitar performance.',
+    set4: 'Flickering and Humming of the Old TV Set\nStart with ambient background noise that includes faint static and white noise to represent the TV’s initial power-up. Incorporate subtle flickering and humming sounds that mimic the TV screen’s instability and electrical components.',
+    set5: 'Distant Rumble of Thunder Becomes Louder and More Intense\nA low wind hum and occasional crackles add to the stormy atmosphere, ending with an aggressive rumble signaling an approaching storm.',
+    set6: 'High-Pitched Scraping of the Tool Bit Against the Metal Rod\nBegin with a high-pitched, sustained scraping sound of the tool bit on the metal rod. Add a subtle, rhythmic mechanical hum to suggest lathe rotation. Include slight pitch and intensity variations to mimic metalworking, emphasizing a precise machining environment.',
+    set7: 'Metal Keys Clattering Against Metal Body\nBegin with a busy newsroom ambiance. Add the rhythmic sound of an old typewriter, focusing on the sharp metallic clatter of keys striking the body. Keep the texture continuous, emphasizing the tactile, metallic feedback.',
+    set8: 'The Skateboard Wheels Scraping and Grinding on the Ground.\nStart with steady rolling on a hard surface. Add sharp scraping and grinding sounds as wheels hit rough patches. Include a quick whoosh and foot contact for a flip trick, ending with a smooth landing and continued rolling.',
+  };
+
+  const posterMap2 = {
+    set1: 'first_frames/10.jpg',
+    set2: 'first_frames/104.jpg',
+    set3: 'first_frames/114.jpg',
+    set4: 'first_frames/284.jpg',
+    set5: 'first_frames/326.jpg',
+    set6: 'first_frames/396.jpg',
+    set7: 'first_frames/402.jpg',
+    set8: 'first_frames/485.jpg',
+  };
+
+  const table2 = document.getElementById('video-table2');
+  const methods2 = Object.keys(videoSets2.set1);
+
+  const thead2 = document.createElement('thead');
+  const headRow2 = document.createElement('tr');
+  headRow2.appendChild(Object.assign(document.createElement('th'), { textContent: 'CoT' }));
+  methods2.forEach(m => headRow2.appendChild(Object.assign(document.createElement('th'), { textContent: m })));
+  thead2.appendChild(headRow2);
+  table2.appendChild(thead2);
+
+  const tbody2 = document.createElement('tbody');
+  Object.entries(videoSets2).forEach(([setName, variants], rowIndex) => {
+    const tr = document.createElement('tr');
+    tr.appendChild(Object.assign(document.createElement('th'), {
+      innerHTML: (displayMap2[setName] || setName).replace(/\n/g, '<br>'),
+      style: 'background-color:#eef2f7; color:#24446e;'
+    }));
+
+    methods2.forEach(m => {
+      const td = document.createElement('td');
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('video-wrapper');
+      wrapper.style.cursor = 'pointer';
+
+      const img = document.createElement('img');
+      img.src = posterMap2[setName];
+      img.style.width = '100%';
+      img.style.display = 'block';
+      wrapper.appendChild(img);
+
+      wrapper.addEventListener('click', () => {
+        const video = document.createElement('video');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('controls', '');
+        video.autoplay = true;
+        video.classList.add('loaded-video');
+        video.src = variants[m].video;
+        wrapper.innerHTML = '';
+        wrapper.appendChild(video);
+      });
+
+      td.appendChild(wrapper);
+      tr.appendChild(td);
+    });
+
+    tbody2.appendChild(tr);
+  });
+
+  table2.appendChild(tbody2);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
     <div class="image-container">
@@ -1254,23 +1399,40 @@ carousel.addEventListener('mousemove', (e) => {
         <div class="panels-container">
 
         <div class="chat-panel">
-    <h3 class="panel-title">Extract</h3>
+    <h3 class="panel-title">Extract and Extend</h3>
 
     <div class="message left">
-        <div class="bubble">
-        Here's the original video segment. We focus on this region to generate audio:
+        <div class="bubble" style="text-align: left; text-indent: 1em;">
+        Here's the original video segment. Generate a wilderness scene with a coyote howling and barking prominently, incorporating occasional yips, to reflect the accurate coyote howling description. Include subtle ambient natural sounds like grass rustling and distant wildlife, ensuring the focus remains on the coyote’s vocalizations. Exclude human voices or artificial noises to match the authentic animal sound environment.
         <video controls width="250">
             <source src="https://github.com/user-attachments/assets/7b06958b-2bd1-41c2-b7a5-aa39b61790a8" type="video/mp4">
             not supported.
         </video>
-        Focusing Here
-        <img src="img/focus.jpg" alt="focusing" style="max-width: 100%; border-radius: 6px;">
+
         </div>
     </div>
 
     <div class="message right">
         <div class="bubble">
-        Generated sound based on visual focus:
+        Generated audio:
+        <audio controls>
+            <source src="audios/SrU3mfTPYg_000032.wav" type="audio/wav">
+            not supported.
+        </audio>
+        </div>
+    </div>
+
+    <div class="message left">
+        <div class="bubble" style="text-align: left; text-indent: 1em;">
+        Focusing here and extending the audio.
+        <img src="img/focus.jpg" alt="focusing" style="max-width: 100%; border-radius: 6px;">
+
+        </div>
+    </div>
+
+    <div class="message right">
+        <div class="bubble">
+        Generated audio:
         <audio controls>
             <source src="audios/SrU3mfTPYg_000032.wav" type="audio/wav">
             not supported.
@@ -1279,33 +1441,50 @@ carousel.addEventListener('mousemove', (e) => {
     </div>
 
 
-
     
     </div>
 
 
         <div class="chat-panel">
-            <h3 class="panel-title">Edit</h3>
+            <h3 class="panel-title">Extract and Enrich Details</h3>
                 <div class="message left">
-                <div class="bubble" style="text-align: left; text-indent: 1em;">
-                Here's the original video segment. Generate a wilderness scene with a coyote howling and barking prominently, incorporating occasional yips, to reflect the accurate coyote howling description. Include subtle ambient natural sounds like grass rustling and distant wildlife, ensuring the focus remains on the coyote’s vocalizations. Exclude human voices or artificial noises to match the authentic animal sound environment.
-                <video controls width="250">
-                    <source src="https://github.com/user-attachments/assets/0c5fdcdc-43d2-4a9a-9705-53cc57fa4b31" type="video/mp4">
-                    not supported.
-                </video>
+                    <div class="bubble" style="text-align: left; text-indent: 1em;">
+                    Here's the original video segment. Generate a wilderness scene with a coyote howling and barking prominently, incorporating occasional yips, to reflect the accurate coyote howling description. Include subtle ambient natural sounds like grass rustling and distant wildlife, ensuring the focus remains on the coyote’s vocalizations. Exclude human voices or artificial noises to match the authentic animal sound environment.
+                    <video controls width="250">
+                        <source src="https://github.com/user-attachments/assets/0c5fdcdc-43d2-4a9a-9705-53cc57fa4b31" type="video/mp4">
+                        not supported.
+                    </video>
 
-                </div>
+                    </div>
                 </div>
 
             <div class="message right">
                 <div class="bubble">
-                    Edit sound based on CoT:
+                    Generated audio:
                     <audio controls>
-                        <source src="audios/xsRyM_fXYI_000006.wav" type="audio/wav">
+                        <source src="audios/SrU3mfTPYg_000032.wav" type="audio/wav">
                         not supported.
                     </audio>
-                    </div>
                 </div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble" style="text-align: left; text-indent: 1em;">
+                    Focusing here and enrich details.
+                    <img src="img/focus.jpg" alt="focusing" style="max-width: 100%; border-radius: 6px;">
+
+                </div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">
+                    Generated audio:
+                    <audio controls>
+                        <source src="audios/SrU3mfTPYg_000032.wav" type="audio/wav">
+                        not supported.
+                    </audio>
+                </div>
+            </div>
 
         </div>
         </div>
