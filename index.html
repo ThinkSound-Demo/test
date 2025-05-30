@@ -727,10 +727,11 @@ function createVideoCard(src, index) {
     });
 
 
-    video.addEventListener('play', () =>  status.textContent = '❚❚' );
+    
     video.addEventListener('pause', () => status.textContent = '▶'   );
 
     video.addEventListener('play', () => {
+        status.textContent = '❚❚'
         const left = container.offsetLeft - carousel.offsetWidth / 2 + container.offsetWidth / 2;
         carousel.scrollTo({ left, behavior: 'smooth' });
     });
@@ -1215,7 +1216,7 @@ carousel.addEventListener('mousemove', (e) => {
         <div class="bubble">
         Generated sound based on visual focus:
         <audio controls>
-            <source src="https://thinksound-demo.github.io/test/compare/think_sound_best/JFG4YvcJ3bo_000228.mp4" type="audio/mpeg">
+            <source src="audios/JFG4YvcJ3bo_000228.wav" type="audio/wav">
             not supported.
         </audio>
         </div>
@@ -1232,7 +1233,7 @@ carousel.addEventListener('mousemove', (e) => {
         <div class="bubble">
         Corresponding audio output:
         <audio controls>
-            <source src="https://thinksound-demo.github.io/test/compare/think_sound_best/JFG4YvcJ3bo_000228.mp4" type="audio/mpeg">
+            <source src="audios/JFG4YvcJ3bo_000228.wav" type="audio/wav">
             not supported.
         </audio>
         </div>
@@ -1244,21 +1245,20 @@ carousel.addEventListener('mousemove', (e) => {
             <h3 class="panel-title">Edit</h3>
                 <div class="message left">
                 <div class="bubble">
-                Here's the original video segment. We focus on this region to generate audio:
+                Here's the original video segment. Generate a wilderness scene with a coyote howling and barking prominently, incorporating occasional yips, to reflect the accurate coyote howling description. Include subtle ambient natural sounds like grass rustling and distant wildlife, ensuring the focus remains on the coyote’s vocalizations. Exclude human voices or artificial noises to match the authentic animal sound environment.
                 <video controls width="250">
                     <source src="videos/demo_xsRyM_fXYI_000006.mp4" type="video/mp4">
                     not supported.
                 </video>
 
-                <img src="example.jpg" alt="focusing" style="max-width: 100%; border-radius: 6px;">
                 </div>
             </div>
 
             <div class="message right">
                 <div class="bubble">
-                    Generate a wilderness scene with a coyote howling and barking prominently, incorporating occasional yips, to reflect the accurate coyote howling description. Include subtle ambient natural sounds like grass rustling and distant wildlife, ensuring the focus remains on the coyote’s vocalizations. Exclude human voices or artificial noises to match the authentic animal sound environment.
+                    Generated sound based on visual focus:
                     <audio controls>
-                        <source src="videos/demo_xsRyM_fXYI_000006.mp4" type="audio/mpeg">
+                        <source src="audios/xsRyM_fXYI_000006.wav" type="audio/wav">
                         not supported.
                     </audio>
                     </div>
@@ -1275,7 +1275,7 @@ carousel.addEventListener('mousemove', (e) => {
                     <div class="bubble">
                     Corresponding audio output:
                     <audio controls>
-                        <source src="https://thinksound-demo.github.io/test/compare/think_sound_best/JFG4YvcJ3bo_000228.mp4" type="audio/mpeg">
+                        <source src="audios/xsRyM_fXYI_000006.wav" type="audio/wav">
                         not supported.
                     </audio>
                     </div>
