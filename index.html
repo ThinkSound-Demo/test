@@ -438,10 +438,15 @@
     font-size: 14px;
     }
 
-
+    .video-table .video-table-video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
     .video-table video {
-        width: 160px;
-        height: 90px;
+        width: 200px;
+        height: 112px;
         border-radius: 8px;
         box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         cursor: pointer;
@@ -449,6 +454,14 @@
 
     .video-table video:hover {
         transform: scale(1.05);
+    }
+    .video-poster {
+        width: 150px;
+        height: 180px; 
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        cursor: pointer;
+        object-fit: cover;
     }
 
     .video-row-beautiful {
@@ -470,7 +483,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 120px;
+        width: 150px;
         transition: transform 0.25s ease, box-shadow 0.25s ease;
         cursor: pointer;
     }
@@ -554,7 +567,7 @@
             transform: translateY(-50%) scale(1.05);
         }
         .video-wrapper img {
-            width: 90%;
+            width: 100%;
             height: auto;
             object-fit: cover;
             display: block;
@@ -1171,12 +1184,13 @@ carousel.addEventListener('mousemove', (e) => {
         const wrapper = document.createElement('div');
         wrapper.classList.add('video-wrapper');
         wrapper.style.cursor = 'pointer';  
-
+        
 
         const img = document.createElement('img');
         img.src = posterMap[setName]; 
         img.style.width = '100%';
         img.style.display = 'block';
+        
         wrapper.appendChild(img);
 
 
@@ -1185,7 +1199,7 @@ carousel.addEventListener('mousemove', (e) => {
         video.setAttribute('playsinline', '');
         video.setAttribute('controls', '');
         video.autoplay = true;
-        video.classList.add('loaded-video');
+        video.classList.add('loaded-video', 'video-table-video');
         video.src = variants[m].video; 
         wrapper.innerHTML = '';
         wrapper.appendChild(video);
@@ -1359,7 +1373,7 @@ carousel.addEventListener('mousemove', (e) => {
         video.setAttribute('playsinline', '');
         video.setAttribute('controls', '');
         video.autoplay = true;
-        video.classList.add('loaded-video');
+        video.classList.add('loaded-video', 'video-table-video');
         video.src = variants[m].video;
         wrapper.innerHTML = '';
         wrapper.appendChild(video);
@@ -1515,8 +1529,154 @@ carousel.addEventListener('mousemove', (e) => {
 
 
     </div>
-        <h2 class="chapter-title"> Ablation Studies</h2>
+        <h2 class="chapter-title"> Experiments</h2>
         <hr class="chapter-line">
+        <div style="text-align: left;">
+            <h3> Main Results</h3>
+        </div>
+        <table class="ablation-table">
+            <caption>Table 1: Comparison of our ThinkSound foundation model with existing video-to-audio baselines on the VGGSound test set. ↓ indicates lower is better, ↑ indicates higher is better. For MOS, we show the mean and variance of the MOS scores. † indicates that the method does not use text for inference.</caption>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th colspan="6">Objective Metrics</th>
+                    <th colspan="2">Subjective Metrics</th>
+                    <th colspan="2">Efficiency</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>FD<br> ↓</th>
+                    <th>KL<sub>PaSST</sub> ↓</th>
+                    <th>KL<sub>PaNNs</sub> ↓</th>
+                    <th>DeSync ↓</th>
+                    <th>CLAP<sub>cap</sub> ↑</th>
+                    <th>CLAP<sub>CoT</sub> ↑</th>
+                    <th>MOS-Q <br>↑</th>
+                    <th>MOS-A ↑</th>
+                    <th>Params</th>
+                    <th>Time(s) ↓</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GT</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>0.55</td>
+                    <td>0.28</td>
+                    <td>0.45</td>
+                    <td>4.37±0.21</td>
+                    <td>4.56±0.19</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>See&Hear</td>
+                    <td>118.95</td>
+                    <td>2.26</td>
+                    <td>2.30</td>
+                    <td>1.20</td>
+                    <td>0.32</td>
+                    <td>0.35</td>
+                    <td>2.75±1.08</td>
+                    <td>2.87±0.99</td>
+                    <td>415M</td>
+                    <td>19.42</td>
+                </tr>
+                <tr>
+                    <td>V-AURA†</td>
+                    <td>46.99</td>
+                    <td>2.23</td>
+                    <td>1.83</td>
+                    <td>0.65</td>
+                    <td>0.23</td>
+                    <td>0.37</td>
+                    <td>3.42±1.03</td>
+                    <td>3.20±1.17</td>
+                    <td>695M</td>
+                    <td>14.00</td>
+                </tr>
+                <tr>
+                    <td>FoleyCrafter</td>
+                    <td>39.15</td>
+                    <td>2.06</td>
+                    <td>1.89</td>
+                    <td>1.21</td>
+                    <td><strong>0.41</strong></td>
+                    <td>0.34</td>
+                    <td>3.08±1.21</td>
+                    <td>2.63±0.88</td>
+                    <td>1.20B</td>
+                    <td>3.84</td>
+                </tr>
+                <tr>
+                    <td>Frieren†</td>
+                    <td>74.96</td>
+                    <td>2.55</td>
+                    <td>2.64</td>
+                    <td>1.00</td>
+                    <td>0.37</td>
+                    <td>0.34</td>
+                    <td>3.27±1.11</td>
+                    <td>2.95±1.09</td>
+                    <td>159M</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>V2A-Mapper†</td>
+                    <td>48.10</td>
+                    <td>2.50</td>
+                    <td>2.34</td>
+                    <td>1.23</td>
+                    <td>0.38</td>
+                    <td>0.32</td>
+                    <td>3.31±1.02</td>
+                    <td>3.16±1.04</td>
+                    <td>229M</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>MMAudio</td>
+                    <td>43.26</td>
+                    <td>1.65</td>
+                    <td>1.40</td>
+                    <td><strong>0.44</strong></td>
+                    <td>0.31</td>
+                    <td>0.40</td>
+                    <td>3.84±0.89</td>
+                    <td>3.97±0.82</td>
+                    <td>1.03B</td>
+                    <td>3.01</td>
+                </tr>
+                <tr>
+                    <td><strong>ThinkSound</strong></td>
+                    <td><strong>34.56</strong></td>
+                    <td><strong>1.52</strong></td>
+                    <td><strong>1.32</strong></td>
+                    <td>0.46</td>
+                    <td>0.33</td>
+                    <td><strong>0.46</strong></td>
+                    <td><strong>4.02±0.73</strong></td>
+                    <td><strong>4.18±0.79</strong></td>
+                    <td>1.30B</td>
+                    <td>1.07</td>
+                </tr>
+                <tr>
+                    <td>w/o CoT Reasoning</td>
+                    <td>39.84</td>
+                    <td>1.59</td>
+                    <td>1.40</td>
+                    <td>0.48</td>
+                    <td>0.29</td>
+                    <td>0.41</td>
+                    <td>3.91±0.83</td>
+                    <td>4.04±0.75</td>
+                    <td>1.30B</td>
+                    <td>0.98</td>
+                </tr>
+            </tbody>
+        </table>
         <div class="ablation-section">
             <div style="text-align: left;">
 
@@ -1526,7 +1686,7 @@ carousel.addEventListener('mousemove', (e) => {
                 <p>We evaluate different text encoding strategies with or without CoT reasoning. The results are shown in Table 1. First, CoT reasoning substantially improves audio fidelity—for example, FD improves from 39.84 to 37.65 when comparing CLIP-only to T5 with CoT. Second, integrating contrastive features from CLIP with contextual reasoning from T5 further improves performance, reducing both KL<sub>PaSST</sub> and KL<sub>PaNNs</sub>.</p>
             </div>
         <table class="ablation-table">
-            <caption>Table 1: Comparison of text encoder fusion strategies (CLAP = CLAP<sub>CoT</sub>)</caption>
+            <caption>Table 2: Comparison of text encoder fusion strategies (CLAP = CLAP<sub>CoT</sub>)</caption>
             <thead>
             <tr>
                 <th>Method</th>
@@ -1569,7 +1729,7 @@ carousel.addEventListener('mousemove', (e) => {
             <p>We investigate different ways to integrate video and audio features before feeding them into the single-stream transformer. As shown in Table 2, element-wise addition of video and audio features performs better than audio-only input, especially in synchronization (DeSync reduced from 0.50 to 0.46). Moreover, the gated fusion mechanism outperforms both alternatives across all metrics.</p>
         </div>
         <table class="ablation-table">
-            <caption>Table 2: Comparison of multi-modal integration mechanisms</caption>
+            <caption>Table 3: Comparison of multi-modal integration mechanisms</caption>
             <thead>
             <tr>
                 <th>Integration</th>
@@ -1599,6 +1759,49 @@ carousel.addEventListener('mousemove', (e) => {
             </tr>
             <tr>
                 <td><strong>gated video</strong></td>
+                <td><strong>34.56</strong></td>
+                <td><strong>1.52</strong></td>
+                <td><strong>1.32</strong></td>
+                <td><strong>0.46</strong></td>
+                <td><strong>0.46</strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="text-align: left;">
+            <h3>Impact of Model Size</h3>
+            <p>We compare three model sizes of ThinkSound: Large (1.3B), Medium (724M), and Small (533M). The results are shown in Table 3. The Large model achieves the best performance across all metrics. As model size decreases, performance degrades substantially, highlighting the necessity of adequate model capacity for effective audio generation.</p>
+        </div>
+            <table class="ablation-table">
+            <caption>Table 4: Impact of model size results.</caption>
+            <thead>
+            <tr>
+                <th>Size</th>
+                <th>FD ↓</th>
+                <th>KL<sub>PaSST</sub> ↓</th>
+                <th>KL<sub>PaNNs</sub> ↓</th>
+                <th>DeSync ↓</th>
+                <th>CLAP<sub>CoT</sub> ↑</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Small</td>
+                <td>40.80</td>
+                <td>1.64</td>
+                <td>1.38</td>
+                <td>0.46</td>
+                <td>0.41</td>
+            </tr>
+            <tr>
+                <td>Medium</td>
+                <td>36.80</td>
+                <td>1.56</td>
+                <td>1.34</td>
+                <td>0.46</td>
+                <td>0.44</td>
+            </tr>
+            <tr>
+                <td>Large</td>
                 <td><strong>34.56</strong></td>
                 <td><strong>1.52</strong></td>
                 <td><strong>1.32</strong></td>
