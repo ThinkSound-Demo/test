@@ -627,7 +627,7 @@ function createVideoCard(src, index) {
     video.style.backgroundColor = '#000';
     const status = document.createElement('div');
     status.className = 'status-indicator';
-    status.textContent = '▶';            // 初始为“播放”图标
+    status.textContent = '▶'; 
     Object.assign(status.style, {
       position: 'absolute',
       bottom: '8px',
@@ -653,7 +653,37 @@ function createVideoCard(src, index) {
 }
 
 videoPaths.forEach((src, i) => {
-    carousel.appendChild(createVideoCard(src, i));
+    const originals = videoPaths.map((src, i) => createVideoCard(src, i));
+    const N = originals.length;
+
+
+    originals.slice().reverse().forEach(card => {
+    carousel.appendChild(card.cloneNode(true));
+    });
+
+    originals.forEach(card => {
+    carousel.appendChild(card);
+    });
+
+    originals.forEach(card => {
+    carousel.appendChild(card.cloneNode(true));
+    });
+
+
+    const cardWidth = carousel.children[0].offsetWidth;
+    const style = getComputedStyle(carousel.children[0]);
+    const gap    = parseInt(style.marginRight || 0);
+    const sectionWidth = N * (cardWidth + gap);
+
+    carousel.scrollLeft = sectionWidth;
+
+    carousel.addEventListener('scroll', () => {
+    if (carousel.scrollLeft <= 0) {
+        carousel.scrollLeft += sectionWidth;
+    } else if (carousel.scrollLeft >= sectionWidth * 2) {
+        carousel.scrollLeft -= sectionWidth;
+    }
+    });
 });
 
 setTimeout(() => {
