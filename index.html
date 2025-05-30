@@ -318,15 +318,23 @@
         transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* 修改视频元素样式 */
+
     .video-card video {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* 保持比例填充容器 */
+        object-fit: cover; 
         object-position: center;
     }
+    .panel-title {
+        margin: 0 0 0.5em;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #24446e;
+        border-bottom: 2px solid #0052cc;
+        padding-bottom: 0.25em;
+    }
 
-    /* 新增克隆视频样式 */
+
     .clone-card {
         opacity: 0.5;
         transform: scale(0.9);
@@ -560,6 +568,86 @@
             height: auto;  
         }
 
+        .panels-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;           
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1em;
+        }
+
+
+        .chat-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            background: #fafafa;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+
+        .message {
+            display: flex;
+        }
+
+ 
+        .message.left {
+            justify-content: flex-start;
+        }
+
+ 
+        .message.right {
+            justify-content: flex-end;
+        }
+
+
+        .bubble {
+            max-width: 70%;
+            padding: 0.8em;
+            border-radius: 12px;
+            position: relative;
+            background: #f0f0f0;
+            line-height: 1.4;
+            color: #333;
+            font: 12px 'Quicksand', sans-serif;
+            font-weight: bold;
+        }
+
+
+        .message.left .bubble  { background: #e0f7fa; }
+        .message.right .bubble { background: #ffe0b2; }
+
+
+        .message.left .bubble::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 12px;
+            border: 8px solid transparent;
+            border-right-color: #e0f7fa;
+        }
+        .message.right .bubble::before {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 12px;
+            border: 8px solid transparent;
+            border-left-color: #ffe0b2;
+        }
+
+        .bubble video,
+        .bubble audio,
+        .bubble img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+
 
 
 </style>
@@ -723,7 +811,7 @@ carousel.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
   e.preventDefault();
   
-  // 添加惯性系数
+
   const inertia = 1.5 - Math.abs(carousel.scrollLeft - scrollLeft) / 1000;
   const x = e.pageX - carousel.offsetLeft;
   const walk = (x - startX) * 1.2 * Math.min(inertia, 1.2);
@@ -993,9 +1081,9 @@ carousel.addEventListener('mousemove', (e) => {
         set8: 'first_frames/yLazKv68TeA_000078.jpg',
         set9: 'first_frames/YYRdv32TJnc_000184.jpg',
         set10: 'first_frames/ZaUaqnLdg6k_000030.jpg',
-        set11: 'https://github-production-user-asset-6210df.s3.amazonaws.com/211767456/449088250-9dd7c91f-ba57-45af-82c0-d28e0aa9d197.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250530%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250530T044320Z&X-Amz-Expires=300&X-Amz-Signature=fa8d30d6aac5446bbd68bf4704aae9e4ee3343e48e9aead03dfb3a6bf6092b81&X-Amz-SignedHeaders=host',
-        set12: 'https://github-production-user-asset-6210df.s3.amazonaws.com/211767456/449090143-a9b2d888-0473-4aff-b7ce-6ab3f95aeac6.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250530%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250530T044911Z&X-Amz-Expires=300&X-Amz-Signature=f44bc95e46191587fe1524fc7a2288e4911e5a89fdaece1121633b428713c984&X-Amz-SignedHeaders=host',
-        set13: 'https://github-production-user-asset-6210df.s3.amazonaws.com/211767456/449088191-bb28cf53-e992-4757-81c1-404009017576.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250530%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250530T044345Z&X-Amz-Expires=300&X-Amz-Signature=d499de7265a75263e3ad56ccc66e9fa4a14536ec20c31065341534727ae50f78&X-Amz-SignedHeaders=host',
+        set11: 'https://raw.githubusercontent.com/ThinkSound-Demo/test/main/first_frames/_XyxrZDZ36E_000034.jpg ',
+        set12: 'https://raw.githubusercontent.com/ThinkSound-Demo/test/main/first_frames/_ZC6yk5iE1I_000026.jpg ',
+        set13: 'https://raw.githubusercontent.com/ThinkSound-Demo/test/main/first_frames/_Betmm6FaWo_000096.jpg',
         set14: 'first_frames/0W_wPc-zV3I_000101.jpg',
         set15: 'first_frames/4p8n4Zf-WMM_000190.jpg',
         set16: 'first_frames/W1nb2hIeDKc_000021.jpg'
@@ -1011,7 +1099,7 @@ carousel.addEventListener('mousemove', (e) => {
     thead.appendChild(headRow);
     table.appendChild(thead);
 
-    // 构建表体
+
     const tbody = document.createElement('tbody');
     Object.entries(videoSets).forEach(([setName, variants], rowIndex) => {
       const tr = document.createElement('tr');
@@ -1024,24 +1112,23 @@ carousel.addEventListener('mousemove', (e) => {
         const td = document.createElement('td');
         const wrapper = document.createElement('div');
         wrapper.classList.add('video-wrapper');
-        wrapper.style.cursor = 'pointer';  // 鼠标悬停时显示手型
+        wrapper.style.cursor = 'pointer';  
 
-        // 海报图
+
         const img = document.createElement('img');
-        img.src = posterMap[setName];   // 每个 set 的首帧图片
+        img.src = posterMap[setName]; 
         img.style.width = '100%';
         img.style.display = 'block';
         wrapper.appendChild(img);
 
-        // 点击 wrapper（或 img）时，替换成 video 并播放
+
         wrapper.addEventListener('click', () => {
         const video = document.createElement('video');
         video.setAttribute('playsinline', '');
         video.setAttribute('controls', '');
         video.autoplay = true;
         video.classList.add('loaded-video');
-        video.src = variants[m].video;  // 设置 src 即会下载并播放
-        // 清空 wrapper，插入 video
+        video.src = variants[m].video; 
         wrapper.innerHTML = '';
         wrapper.appendChild(video);
         });
@@ -1065,7 +1152,7 @@ carousel.addEventListener('mousemove', (e) => {
             this.removeEventListener('play', onPlay);
         });
         });
-    // 列切换
+
     const hideColFrom = 4;
     function setColumnDisplay(showAll) {
       table.querySelectorAll('thead th').forEach((th, i) => th.style.display = i >= hideColFrom && !showAll ? 'none' : '');
@@ -1084,7 +1171,7 @@ carousel.addEventListener('mousemove', (e) => {
       colsBtn.textContent = colsExpanded ? 'Collapse' : 'Show All Baselines';
     });
 
-    // 行切换
+
     const rowsBtn = document.getElementById('toggle-rows-btn');
     let rowsExpanded = false;
     rowsBtn.addEventListener('click', () => {
@@ -1101,43 +1188,109 @@ carousel.addEventListener('mousemove', (e) => {
     </div>
 
     <div class="image-container">
-        <h2 class="chapter-title">Extract Audio</h2>
+        
+        <h2 class="chapter-title">Extract and Edit Audio</h2>
         <hr class="chapter-line">
         <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;">
             
         </p>
-        <div class="video-row-beautiful">
-        <div class="video-wrapper">
-        <video src="videos/demo_SrU3mfTPYg_000032.mp4"playsinline></video>
-        <div class="video-title">String Instrument</div>
+        <div class="panels-container">
+
+        <div class="chat-panel">
+    <h3 class="panel-title">Extract</h3>
+
+    <div class="message left">
+        <div class="bubble">
+        Here's the original video segment. We focus on this region to generate audio:
+        <video controls width="250">
+            <source src="https://thinksound-demo.github.io/test/compare/gt_video_best/JFG4YvcJ3bo_000228.mp4" type="video/mp4">
+            not supported.
+        </video>
+
+        <img src="example.jpg" alt="focusing" style="max-width: 100%; border-radius: 6px;">
         </div>
-        <div class="video-wrapper">
-        <video src="videos/demo_SrU3mfTPYg_000032.mp4"playsinline></video>
-        <div class="video-title">String Instrument</div>
+    </div>
+
+    <div class="message right">
+        <div class="bubble">
+        Generated sound based on visual focus:
+        <audio controls>
+            <source src="https://thinksound-demo.github.io/test/compare/think_sound_best/JFG4YvcJ3bo_000228.mp4" type="audio/mpeg">
+            not supported.
+        </audio>
         </div>
-        <div class="video-wrapper">
-        <video src="videos/demo_SrU3mfTPYg_000032.mp4"playsinline></video>
-        <div class="video-title">String Instrument</div>
+    </div>
+
+    <div class="message left">
+        <div class="bubble">
+        Here's another visual focus area:
+        <img src="example.jpg" alt="" style="max-width: 100%; border-radius: 6px;">
         </div>
-        <script>
-        document.querySelectorAll('video').forEach(video => {
-                video.addEventListener('click', () => {
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-                });
-            });
-        </script>
-  </div>
+    </div>
+
+    <div class="message right">
+        <div class="bubble">
+        Corresponding audio output:
+        <audio controls>
+            <source src="https://thinksound-demo.github.io/test/compare/think_sound_best/JFG4YvcJ3bo_000228.mp4" type="audio/mpeg">
+            not supported.
+        </audio>
+        </div>
+    </div>
+    </div>
+
+
+        <div class="chat-panel">
+            <h3 class="panel-title">Edit</h3>
+                <div class="message left">
+                <div class="bubble">
+                Here's the original video segment. We focus on this region to generate audio:
+                <video controls width="250">
+                    <source src="videos/demo_xsRyM_fXYI_000006.mp4" type="video/mp4">
+                    not supported.
+                </video>
+
+                <img src="example.jpg" alt="focusing" style="max-width: 100%; border-radius: 6px;">
+                </div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">
+                    Generate a wilderness scene with a coyote howling and barking prominently, incorporating occasional yips, to reflect the accurate coyote howling description. Include subtle ambient natural sounds like grass rustling and distant wildlife, ensuring the focus remains on the coyote’s vocalizations. Exclude human voices or artificial noises to match the authentic animal sound environment.
+                    <audio controls>
+                        <source src="videos/demo_xsRyM_fXYI_000006.mp4" type="audio/mpeg">
+                        not supported.
+                    </audio>
+                    </div>
+                </div>
+
+                <div class="message left">
+                    <div class="bubble">
+                    Here's another visual focus area:
+                    <img src="example.jpg" alt="" style="max-width: 100%; border-radius: 6px;">
+                    </div>
+                </div>
+
+                <div class="message right">
+                    <div class="bubble">
+                    Corresponding audio output:
+                    <audio controls>
+                        <source src="https://thinksound-demo.github.io/test/compare/think_sound_best/JFG4YvcJ3bo_000228.mp4" type="audio/mpeg">
+                        not supported.
+                    </audio>
+                    </div>
+                </div>
+        </div>
+        </div>
+
+        
 
         
     <div class="image-container">
-        <h2 class="chapter-title">Audio Editing</h2>
+        <h2 class="chapter-title">Cooperate with video generation models</h2>
         <hr class="chapter-line">
         <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;">
-            Below are examples showing editing audios with associated videos and notes.
+            Provide voiceovers for the videos generated by the video generation model.
         </p>
 
         <div class="extract-row">
@@ -1148,21 +1301,6 @@ carousel.addEventListener('mousemove', (e) => {
         <video src="videos/sample1.mp4" controls playsinline muted></video>
     </div>
 
-    <div class="extract-row">
-        <div class="extract-text">
-        <label>Cot:</label>
-        <textarea placeholder="Describe this audio...">Short ambient clip, extracted from nature scene.</textarea>
-        </div>
-        <video src="videos/sample2.mp4" controls playsinline muted></video>
-    </div>
-
-    <div class="extract-row">
-        <div class="extract-text">
-        <label>Cot:</label>
-        <textarea placeholder="Describe this audio...">Urban environment, car honking and traffic.</textarea>
-        </div>
-        <video src="videos/sample3.mp4" controls playsinline muted></video>
-    </div>
     </div>
         
         
