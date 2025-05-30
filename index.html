@@ -413,33 +413,33 @@
     }
 
 
-    #video-table {
+    .video-table {
             width: 100%;
             border-collapse: collapse;
             margin: 0 auto;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    #video-table th,
-    #video-table td {
+    .video-table th,
+    .video-table td {
         border: 1px solid #ddd;
         padding: 8px;
         text-align: center;
         background-color: #fff;
     }
 
-    #video-table th {
+    .video-table th {
         background-color: #f3f6fa;
         font-weight: 600;
         font-size: 14px; 
         color: #24446e;
     }
-    #video-table tbody td {
+    .video-table tbody td {
     font-size: 14px;
     }
 
 
-    #video-table video {
+    .video-table video {
         width: 160px;
         height: 90px;
         border-radius: 8px;
@@ -447,7 +447,7 @@
         cursor: pointer;
     }
 
-    #video-table video:hover {
+    .video-table video:hover {
         transform: scale(1.05);
     }
 
@@ -1146,6 +1146,7 @@ carousel.addEventListener('mousemove', (e) => {
         set16: 'first_frames/W1nb2hIeDKc_000021.jpg'
     };
     const table = document.getElementById('video-table');
+    table.classList.add('video-table');
     const methods = Object.keys(videoSets.set1);
 
 
@@ -1246,68 +1247,69 @@ carousel.addEventListener('mousemove', (e) => {
     <div class="image-container">
         <h2 class="chapter-title">Comparisons on Movie Gen Audio Bench Out-of-Distribution</h2>
         <hr class="chapter-line">
-        <p style="text-align: center; font-size: 16px; max-width: 96%; color: #333">
+        <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;text-align: center">
             Play or pause any video by clicking on it.
         </p>
 
         <div class="table-wrapper">
             <table id="video-table2">
             </table>
+            <button id="toggle-rows-btn3" class="toggle-rows-btn">Show More Cases</button>
         </div>
     </div>
 <script>
   const videoSets2 = {
     set1: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/10.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/10.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/10.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/10.mp4' },
     },
     set2: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/104.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/104.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/104.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/104.mp4' },
     },
     set3: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/114.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/114.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/114.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/114.mp4' },
     },
     set4: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/284.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/284.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/284.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/284.mp4' },
     },   
     set5: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/326.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/326.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/326.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/326.mp4' },
     },
     set6: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/396.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/396.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/396.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/396.mp4' },
     },
     set7: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/402.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/402.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/402.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/402.mp4' },
     },
     set8: {
         "ThinkSound":      { video: 'compare/mg_demos/our_mg/485.mp4' },
+        "Movie Gen Audio":        { video: 'compare/mg_demos/moviegen_mg/485.mp4' },
         "MMAudio":         { video: 'compare/mg_demos/mmaudio_mg/485.mp4' },
-        "Movie Gen":        { video: 'compare/mg_demos/moviegen_mg/485.mp4' },
     }
   };
 
   const displayMap2 = {
-    set1: 'Gentle Sucking Sounds From the Pacifier\nBegin by Creating a soft, consistent background of sucking noises. Add subtle, rhythmic suckling to mimic a baby with a pacifier. Keep the sound smooth, natural, and steady for a soothing effect.',
-    set2: 'Coffee Pouring with a Smooth Gurgling Sound\nStart with a gentle pour of hot coffee into a cup, adding smooth gurgling to match the flow. Layer soft steam sounds to suggest heat. Keep the overall audio calm and continuous to reflect a peaceful coffee-pouring scene.',
-    set3: 'Strings Humming and Buzzing Harmoniously, with Fingers Sliding and Pressing Strings.\nStart with acoustic guitar strings humming and buzzing. Simulate fingers sliding and pressing strings to match a riff. Add slight attack and decay variations to mimic playing. Mix string and finger sounds for a realistic guitar performance.',
+    set1: 'Gentle Sucking Sounds From the Pacifier\nBegin by creating a soft, steady background of light pacifier suckling. Add subtle, breathy rhythms to mimic a newborn’s gentle mouth movements. Keep the sound smooth, natural, and soothing.',
+    set2: 'Coffee Pouring with a Smooth Gurgling Sound\nStart with a gentle pour of hot coffee into a cup, adding smooth gurgling to match the flow. Keep the overall audio calm and continuous to reflect a peaceful coffee-pouring scene.',
+    set3: 'Strings Humming and Buzzing Harmoniously, with Fingers Sliding and Pressing Strings.\nStart with acoustic guitar strings humming and buzzing. Include the sounds of fingers sliding and pressing the strings to match a riff. Add slight attack and decay variations to mimic playing. Mix string and finger sounds for a realistic guitar performance.',
     set4: 'Flickering and Humming of the Old TV Set\nStart with ambient background noise that includes faint static and white noise to represent the TV’s initial power-up. Incorporate subtle flickering and humming sounds that mimic the TV screen’s instability and electrical components.',
-    set5: 'Distant Rumble of Thunder Becomes Louder and More Intense\nA low wind hum and occasional crackles add to the stormy atmosphere, ending with an aggressive rumble signaling an approaching storm.',
-    set6: 'High-Pitched Scraping of the Tool Bit Against the Metal Rod\nBegin with a high-pitched, sustained scraping sound of the tool bit on the metal rod. Add a subtle, rhythmic mechanical hum to suggest lathe rotation. Include slight pitch and intensity variations to mimic metalworking, emphasizing a precise machining environment.',
-    set7: 'Metal Keys Clattering Against Metal Body\nBegin with a busy newsroom ambiance. Add the rhythmic sound of an old typewriter, focusing on the sharp metallic clatter of keys striking the body. Keep the texture continuous, emphasizing the tactile, metallic feedback.',
-    set8: 'The Skateboard Wheels Scraping and Grinding on the Ground.\nStart with steady rolling on a hard surface. Add sharp scraping and grinding sounds as wheels hit rough patches. Include a quick whoosh and foot contact for a flip trick, ending with a smooth landing and continued rolling.',
+    set5: 'Distant Rumble of Thunder Becomes Louder and More Intense\nA low wind hum and occasional crackles add to the stormy atmosphere, signaling an approaching storm.',
+    set6: 'High-Pitched Scraping of the Tool Bit Against the Metal Rod\nBegin with a high-pitched, sustained scraping sound of the tool on the metal rod. Add a subtle, rhythmic mechanical hum to suggest lathe rotation. Include slight pitch and intensity variations to mimic metalworking, emphasizing a precise machining environment.',
+    set7: 'Metal Keys Clattering Against Metal Body\nBegin with the ambiance of a quiet newsroom room with a single person. Add the rhythmic sound of an old typewriter, focusing on the sharp metallic clatter of keys striking the body. Keep the texture continuous, emphasizing the tactile, metallic feedback.',
+    set8: 'The Skateboard Wheels Scraping and Grinding on the Ground.\nStart with steady rolling on a hard surface. Add sharp scraping and grinding sounds as wheels hit rough patches. Include a quick whoosh and foot contact for a flip trick.',
   };
 
   const posterMap2 = {
@@ -1322,6 +1324,7 @@ carousel.addEventListener('mousemove', (e) => {
   };
 
   const table2 = document.getElementById('video-table2');
+  table2.classList.add('video-table');
   const methods2 = Object.keys(videoSets2.set1);
 
   const thead2 = document.createElement('thead');
@@ -1370,6 +1373,18 @@ carousel.addEventListener('mousemove', (e) => {
   });
 
   table2.appendChild(tbody2);
+  tbody2.querySelectorAll('tr').forEach((tr, idx) => {
+    tr.style.display = idx >= 2 ? 'none' : '';
+    });
+  const rowsBtn2 = document.getElementById('toggle-rows-btn3');
+    let rowsExpanded2 = false;
+    rowsBtn2.addEventListener('click', () => {
+      rowsExpanded2 = !rowsExpanded2;
+      tbody2.querySelectorAll('tr').forEach((tr, idx) => {
+        tr.style.display = idx >= 2 && !rowsExpanded2 ? 'none' : '';
+      });
+      rowsBtn2.textContent = rowsExpanded2 ? 'Collapse' : 'Show More Cases';
+    });
 </script>
 
 
