@@ -937,7 +937,7 @@ carousel.addEventListener('mousemove', (e) => {
 
     <!-- Image section -->
     <div class="image-container">
-        <h2 class="chapter-title">Video-to-Audio Generation Comparisons on VGGSound (In-distribution)</h2>
+        <h2 class="chapter-title">Video-to-Audio Generation Comparisons on VGGSound</h2>
         <hr class="chapter-line">
         <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;text-align: center">
             Play or pause any video by clicking on it.
@@ -1013,6 +1013,17 @@ carousel.addEventListener('mousemove', (e) => {
         "Frieren":         { video: 'compare/Frieren_vgg_best/JFG4YvcJ3bo_000228.mp4' },
         "V2A-Mapper":      { video: 'compare/V2A-Mapper-vgg_best/JFG4YvcJ3bo_000228.mp4' },
         "FoleyCrafter":      { video: 'compare/best_foleycrafter/JFG4YvcJ3bo_000228.mp4' },
+    },
+
+    set6: {
+        "Ground Truth":    { video: 'compare/gt_video_best/Rp39_WnX5Fk_000380.mp4' },
+        "ThinkSound":      { video: 'compare/think_sound_best/Rp39_WnX5Fk_000380.mp4' },
+        "MMAudio":         { video: 'compare/mmaudio_vgg_best/Rp39_WnX5Fk_000380.mp4' },
+        "See&Hear":    { video: 'compare/seeing_vgg_best/Rp39_WnX5Fk_000380.mp4' },
+        "V-AURA":          { video: 'compare/V-AURA-vgg_best/Rp39_WnX5Fk_000380.mp4' },
+        "Frieren":         { video: 'compare/Frieren_vgg_best/Rp39_WnX5Fk_000380.mp4' },
+        "V2A-Mapper":      { video: 'compare/V2A-Mapper-vgg_best/Rp39_WnX5Fk_000380.mp4' },
+        "FoleyCrafter":      { video: 'compare/best_foleycrafter/Rp39_WnX5Fk_000380.mp4' },
     },
 
     set7: {
@@ -1133,6 +1144,7 @@ carousel.addEventListener('mousemove', (e) => {
         set3: 'Ripping Paper\nStart with a subtle tearing sound of paper being ripped, emphasizing a continuous, consistent noise. Ensure the sound has slight variations to mimic real tearing. No background or additional noises are needed, focusing solely on the tearing action.',
         set4: 'Using Sewing Machines\nGenerate ambient sewing room sounds with consistent sewing machine hum and minimal background noise, focusing on characteristic machine noise to match the correct descriptions.',
         set5: 'Playing Bongo\nGenerate a lively percussion track featuring only rhythmic drum beats—no other instruments or voices. Maintain a natural, well-balanced stereo mix to showcase the drums.',
+        // set6: 'Ground Train, Railway Environment\nGenerate ground train sounds including ambient railway environment noise, engine hum, wheels on tracks, and the changing sound of the train approaching.',
         set7: 'Chopping Food\nGenerate rhythmic chopping sounds consistent with cutting meat or vegetables, with occasional plastic bag rustles. Include ambient marketplace noise—vendors calling out, customers chatting, and cart wheels—to create a realistic outdoor market chopping scene.',
         set8: 'People Eating Crisps\nGenerate audio focusing on clear, rhythmic chewing sounds of eating, without any crinkling paper or breathing noises. Maintain a natural, well-balanced mix to highlight the chewing activity.',
         set9: 'Plastic Debris Handling\nBegin with the sound of hands scooping up loose plastic debris, followed by the subtle cascading noise as the pieces fall and scatter back down. Include soft crinkling and rustling to emphasize the texture of the plastic. Add ambient factory background noise with distant machinery to create an industrial atmosphere.',
@@ -1151,6 +1163,7 @@ carousel.addEventListener('mousemove', (e) => {
         set3: 'first_frames/1u1orBeV4xI_000428.jpg',
         set4: 'first_frames/55L7peYRB_Q_000120.jpg',
         set5: 'first_frames/JFG4YvcJ3bo_000228.jpg',
+        // set6: 'first_frames/Rp39_WnX5Fk_000380.jpg',
         set7: 'first_frames/xmTfE3F2huE_000854.jpg',
         set8: 'first_frames/yLazKv68TeA_000078.jpg',
         set9: 'first_frames/YYRdv32TJnc_000184.jpg',
@@ -1263,7 +1276,7 @@ carousel.addEventListener('mousemove', (e) => {
         
 
     <div class="image-container">
-        <h2 class="chapter-title">Video to Audio Generation Comparisons on Movie Gen Audio Bench (Out-of-Distribution)</h2>
+        <h2 class="chapter-title">Comparisons on Movie Gen Audio Bench Out-of-Distribution</h2>
         <hr class="chapter-line">
         <p style="text-align: left; font-size: 16px; max-width: 96%; color: #333;text-align: center">
             Play or pause any video by clicking on it.
@@ -1719,6 +1732,17 @@ carousel.addEventListener('mousemove', (e) => {
                 </tr>
             </tbody>
         </table>
+        <div class="ablation-section">
+            <div style="text-align: left;">
+
+                <p><strong>ThinkSound</strong> outperforms all baselines across most objective metrics and all subjective metrics. 
+                    Compared to the strongest baseline (MMAudio), our model achieves substantial improvements in audio quality ($\text{KL}_{\text{PaSST}}$: 1.52 vs. 1.65) and semantic alignment ($\text{CLAP}_{\text{CoT}}$: 0.46 vs. 
+                    0.40), while maintaining comparable temporal synchronization performance on the objective synchronization metric.</p>
+
+            </div>
+        <div style="text-align: left;">
+            <h3> Ablation Studies </h3>
+        </div>
         <div class="ablation-section">
             <div style="text-align: left;">
 
