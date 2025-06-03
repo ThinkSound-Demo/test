@@ -738,7 +738,13 @@ function createVideoCard(src, index) {
       textShadow: '0 0 4px rgba(0,0,0,0.6)',
       pointerEvents: 'none',           
     });
-
+    video.addEventListener('click', () => {
+        if (video.paused) {
+            video.play().catch(e => console.warn("Play error:", e));
+        } else {
+            video.pause();
+        }
+    });
 
     
     video.addEventListener('play', () => status.textContent = '❚❚');
@@ -751,6 +757,31 @@ function createVideoCard(src, index) {
 
     container.appendChild(video);
     container.appendChild(status);
+
+    const rewindBtn = document.createElement('div');
+    rewindBtn.textContent = '⟲';
+    Object.assign(rewindBtn.style, {
+        position: 'absolute',
+        top: '8px',
+        right: '8px',
+        fontSize: '1.3em',
+        color: 'white',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        borderRadius: '5px',
+        padding: '2px 6px',
+        cursor: 'pointer',
+        userSelect: 'none',
+    });
+
+    rewindBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.currentTime = 0;
+        video.play();
+    });
+
+    container.style.position = 'relative'; 
+    container.appendChild(rewindBtn);
+
     return container;
 }
 
@@ -864,20 +895,6 @@ carousel.addEventListener('mousemove', (e) => {
 });
 </script>
 
-    <script>
-        document.querySelectorAll('video').forEach(video => {
-                video.addEventListener('click', () => {
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-                });
-            });
-        </script>
-
-
-    </script>
 
 
 
